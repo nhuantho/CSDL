@@ -13,6 +13,9 @@ import java.util.logging.Logger;
  *
  * @author Nhuan's computer
  */
+
+//kjfgdjksgfjhdsgfjgdsjhgfjdhsgfj
+
 public class CSDL {
     //gọi 1 cơ sở dữ liệu mysql
     public static Connection jdbcConnection(){
