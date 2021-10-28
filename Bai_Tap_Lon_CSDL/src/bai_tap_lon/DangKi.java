@@ -20,11 +20,6 @@ public class DangKi extends javax.swing.JFrame {
     public DangKi() {
         initComponents();;
     }
-//    dung ne
-    //    dung ne
-
-    //    dung ne
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -282,7 +277,6 @@ public class DangKi extends javax.swing.JFrame {
         
     }
 
-    //hello ae
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField SDT;
     private javax.swing.JButton dangki;
@@ -304,4 +298,3 @@ public class DangKi extends javax.swing.JFrame {
     private javax.swing.JButton welcome;
     // End of variables declaration//GEN-END:variables
 }
-//Duc cmt
