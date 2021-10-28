@@ -247,6 +247,7 @@ public class DangKi extends javax.swing.JFrame {
         
     }
 
+    //hello ae
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField SDT;
     private javax.swing.JButton dangki;
