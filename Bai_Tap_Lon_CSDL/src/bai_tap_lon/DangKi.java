@@ -228,6 +228,9 @@ public class DangKi extends javax.swing.JFrame {
         if(check==true){
             if(CSDL.insert_into_user(id.getText(), hodem.getText(), ten.getText(), ngaysinh.getText(), diachi.getText(), SDT.getText())==true){
                 JOptionPane.showMessageDialog(this, "Dang ki thanh cong");
+                DangNhap dn=new DangNhap();
+                dn.setVisible(true);
+                this.dispose();
             }else JOptionPane.showMessageDialog(this, "Dang ki that bai");
         }else JOptionPane.showMessageDialog(this, "Dang ki that bai");
     }//GEN-LAST:event_dangkiActionPerformed
