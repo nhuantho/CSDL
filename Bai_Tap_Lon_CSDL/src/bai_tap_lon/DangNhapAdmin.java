@@ -5,6 +5,8 @@
  */
 package bai_tap_lon;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Nhuan's computer
@@ -112,9 +114,13 @@ public class DangNhapAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_dangkiActionPerformed
     //ấn vào đăng nhập để vào trang chủ admin
     private void dangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dangnhapActionPerformed
-        TrangChuAdmin ttadmin=new TrangChuAdmin();
-        ttadmin.setVisible(true);
-        this.dispose();
+        if(CSDL.statement_kiemtrataikhoan(taikhoan.getText())==true && CSDL.statement_kiemtramatkhau(matkhau.getText())==true){
+            TrangChuAdmin tcadmin=new TrangChuAdmin();
+            tcadmin.setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Sai ten dang nhap hoac mat khau, tai khoan chua ton tai");
+        }
     }//GEN-LAST:event_dangnhapActionPerformed
 
     /**

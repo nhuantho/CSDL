@@ -160,8 +160,45 @@ public class DangKiAdmin extends javax.swing.JFrame {
         int dk=JOptionPane.showConfirmDialog(this,"Ban co muon dang ki", "Thanh Cong", JOptionPane.YES_NO_OPTION);
         if(dk!=JOptionPane.YES_OPTION)
             return;
-        if(CSDL.insert_into_admin(id.getText(), hoten.getText(), SDT.getText(), email.getText())){
-            JOptionPane.showMessageDialog(this, "Dang ki thanh cong");
+        //công thức regex
+        String resdt="^0(\\d{8}|\\d{9})$";
+        String reemail="[a-z0-9]*(\\@(gmail)\\.(com))$";
+        //biến check để kiểm tra
+        boolean check=true;
+        //kiểm tra tài khoản đã tồn tại chưa
+        if(CSDL.statement_kiemtrataikhoan(id.getText())==true){
+            JOptionPane.showMessageDialog(this, "Da ton tai tai khoan");
+            check=false;
+        }
+        //kiểm tra 2 mật khẩu
+        if(matkhau.getText().equalsIgnoreCase(nhaplaipass.getText())==false){
+            JOptionPane.showMessageDialog(this, "2 mat khau khong giong nhau");
+            check=false;
+        }
+        //kiểm tra định dạng sđt
+        if(SDT.getText().matches(resdt)==false){
+            JOptionPane.showMessageDialog(this, "Sai dinh dang so dien thoai");
+            check=false;
+        }
+        //kiểm tra định dạng ngày sinh
+        if(email.getText().matches(reemail)==false){
+            JOptionPane.showMessageDialog(this, "Sai dinh dang email");
+            check=false;
+        }
+        //kiểm tra xem đã nhập vào bảng tài khoản được chưa
+        if(check==true){
+            if(CSDL.insert_into_taikhoan(id.getText(), matkhau.getText())==false){
+                JOptionPane.showMessageDialog(this, "Dang ki that bai");
+                check=false;
+            }
+        }
+        if(check==true){
+            if(CSDL.insert_into_admin(id.getText(), hoten.getText(), SDT.getText(), email.getText())){
+                JOptionPane.showMessageDialog(this, "Dang ki thanh cong");
+                DangNhapAdmin dnadmin=new DangNhapAdmin();
+                dnadmin.setVisible(true);
+                this.dispose();
+            }
         }else{
             JOptionPane.showMessageDialog(this, "Dang ki that bai");
         }

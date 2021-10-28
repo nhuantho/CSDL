@@ -192,17 +192,47 @@ public class DangKi extends javax.swing.JFrame {
         int dk=JOptionPane.showConfirmDialog(this,"Ban co muon dang ki", "Thanh Cong", JOptionPane.YES_NO_OPTION);
         if(dk!=JOptionPane.YES_OPTION)
             return;
+        //công thức regex
         String resdt="^0(\\d{8}|\\d{9})$";
         String rengay="^\\d{2}[-|\\/]\\d{2}[-|\\/]\\d{4}$";
-        
-        if(matkhau.getText().equalsIgnoreCase(nhaplaipass.getText())==true && SDT.getText().matches(resdt)==true && ngaysinh.getText().matches(rengay)==true && CSDL.statement_kiemtrataikhoan(id.getText())==false){
-            if(CSDL.insert_into_taikhoan(id.getText(), matkhau.getText())==true){
-                if(CSDL.insert_into_user(id.getText(), hodem.getText(), ten.getText(), ngaysinh.getText(), diachi.getText(), SDT.getText())==true)
-                    JOptionPane.showMessageDialog(this, "Dang ki thanh cong");
-            }else JOptionPane.showMessageDialog(this, "Dang ki that bai");
-        }else{
-            JOptionPane.showMessageDialog(this, "Tai khoan da ton tai, 2 mat khau khong giong nhau, kiem tra so dien thoai, kiem tra ngay nhap");
+        //biến check để kiểm tra
+        boolean check=true;
+        //kiểm tra tài khoản đã tồn tại chưa
+        if(CSDL.statement_kiemtrataikhoan(id.getText())==true){
+            JOptionPane.showMessageDialog(this, "Da ton tai tai khoan");
+            check=false;
         }
+        //kiểm tra 2 mật khẩu
+        if(matkhau.getText().equalsIgnoreCase(nhaplaipass.getText())==false){
+            JOptionPane.showMessageDialog(this, "2 mat khau khong giong nhau");
+            check=false;
+        }
+        //kiểm tra định dạng sđt
+        if(SDT.getText().matches(resdt)==false){
+            JOptionPane.showMessageDialog(this, "Sai dinh dang so dien thoai");
+            check=false;
+        }
+        //kiểm tra định dạng ngày sinh
+        if(ngaysinh.getText().matches(rengay)==false){
+            JOptionPane.showMessageDialog(this, "Sai dinh dang ngay sinh");
+            check=false;
+        }
+        //kiểm tra xem đã nhập vào bảng tài khoản được chưa
+        if(check==true){
+            if(CSDL.insert_into_taikhoan(id.getText(), matkhau.getText())==false){
+                JOptionPane.showMessageDialog(this, "Dang ki that bai");
+                check=false;
+            }
+        }
+        //kiểm tra xem đã nhập vào bảng người dùng được chưa
+        if(check==true){
+            if(CSDL.insert_into_user(id.getText(), hodem.getText(), ten.getText(), ngaysinh.getText(), diachi.getText(), SDT.getText())==true){
+                JOptionPane.showMessageDialog(this, "Dang ki thanh cong");
+                DangNhap dn=new DangNhap();
+                dn.setVisible(true);
+                this.dispose();
+            }else JOptionPane.showMessageDialog(this, "Dang ki that bai");
+        }else JOptionPane.showMessageDialog(this, "Dang ki that bai");
     }//GEN-LAST:event_dangkiActionPerformed
     //ấn vào welcom trở về welcome
     private void welcomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_welcomeActionPerformed
