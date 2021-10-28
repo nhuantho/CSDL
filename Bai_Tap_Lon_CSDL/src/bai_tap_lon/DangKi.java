@@ -20,6 +20,7 @@ public class DangKi extends javax.swing.JFrame {
     public DangKi() {
         initComponents();;
     }
+//    dung ne
 
     /**
      * This method is called from within the constructor to initialize the form.
