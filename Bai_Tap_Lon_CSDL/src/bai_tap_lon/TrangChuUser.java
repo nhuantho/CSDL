@@ -65,6 +65,11 @@ public class TrangChuUser extends javax.swing.JFrame {
         nhaptt.setBackground(new java.awt.Color(255, 102, 0));
         nhaptt.setForeground(new java.awt.Color(255, 255, 255));
         nhaptt.setText("Nhập thông tin hàng ngày");
+        nhaptt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nhapttActionPerformed(evt);
+            }
+        });
 
         trangchu.setBackground(new java.awt.Color(255, 102, 0));
         trangchu.setForeground(new java.awt.Color(255, 255, 255));
@@ -157,6 +162,13 @@ public class TrangChuUser extends javax.swing.JFrame {
     private void lichsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lichsuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lichsuActionPerformed
+
+    private void nhapttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nhapttActionPerformed
+        // TODO add your handling code here:
+        Nhap_Thong_Tin_Hang_Ngay thongtin=new Nhap_Thong_Tin_Hang_Ngay();
+            thongtin.setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_nhapttActionPerformed
 
     /**
      * @param args the command line arguments
