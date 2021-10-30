@@ -20,13 +20,11 @@ public class CSDL {
     public static Connection jdbcConnection(){
         String url="jdbc:mysql://localhost:3306/quanlisuckhoe";
         String user="root";
-        String password = "nt01247005688N";
+        String password = "5122001t";
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(url, user, password);
-        }catch(ClassNotFoundException e){
-            System.out.println(e);
-        }catch(SQLException e){
+        }catch(ClassNotFoundException | SQLException e){
             System.out.println(e);
         }
         return null;
@@ -61,7 +59,7 @@ public class CSDL {
                 String tk=re.getString("UserID");
                 if(tk.equalsIgnoreCase(taikhoan)==true) return true;
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
         }
         return false;
     }
@@ -75,7 +73,7 @@ public class CSDL {
                 String mk=re.getString("MatKhau");
                 if(mk.equalsIgnoreCase(matkhau)==true) return true;
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
         }
         return false;
     }
@@ -136,4 +134,10 @@ public class CSDL {
         }
         return false;
     }
+     
+     
+    // Hiển thị thông tin người dùng
+     public static void statement_hienthithongtin() {
+         
+     }
 }
