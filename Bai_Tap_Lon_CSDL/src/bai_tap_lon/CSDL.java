@@ -16,6 +16,10 @@ import java.util.logging.Logger;
 
 
 public class CSDL {
+    private String UserID;
+    public CSDL(){
+        
+    }
     //gọi 1 cơ sở dữ liệu mysql
     public static Connection jdbcConnection(){
         String url="jdbc:mysql://localhost:3306/quanlisuckhoe";
@@ -135,5 +139,35 @@ public class CSDL {
             Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+    //nhap thong tin hang ngay vao co so du lieu by tanhdz
+    public static boolean insert_into_nhap_thong_tin_hang_ngay(String UserId,String day,String CanNang,String ChieuCao,String BMI,String TheTrang){
+        try{
+            if(ChieuCao.equalsIgnoreCase("")==true||CanNang.equalsIgnoreCase("")==true) return false;
+            String insert="insert into nhapthongtinvaloikhuyen values(?,?,?,?,?,?)";
+            PreparedStatement ps=jdbcConnection().prepareStatement(insert);
+            ps.setString(1, UserId);
+            ps.setString(2, day);
+            Double chieucao=Double.valueOf(ChieuCao);//format sang by tanhdz
+            Double cannang=Double.valueOf(CanNang);
+            Double bmi=Double.valueOf(BMI);
+            ps.setDouble(3, cannang);
+            ps.setDouble(4, chieucao);
+            ps.setDouble(5, bmi);
+            ps.setString(6, TheTrang);
+            int n=ps.executeUpdate();
+            if(n!=0)return true;
+            return false;
+            //cap nhat xong by tanhdz
+        } catch(SQLException e){
+            Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+    public void setUserID(String UserID){
+        this.UserID=DangNhap.taikhoan.getText();
+    }
+    public String getUserID(){
+        return this.UserID;
     }
 }

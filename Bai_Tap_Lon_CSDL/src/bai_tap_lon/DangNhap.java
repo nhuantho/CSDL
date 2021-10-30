@@ -123,6 +123,7 @@ public class DangNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_welcomeActionPerformed
     //ấn vào đăng nhập để vào trang chủ người dùng
     private void dangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dangnhapActionPerformed
+
         if(CSDL.statement_kiemtrataikhoan(taikhoan.getText())==true && CSDL.statement_kiemtramatkhau(matkhau.getText())==true){
             TrangChuUser tcuse=new TrangChuUser();
             tcuse.setVisible(true);
@@ -158,7 +159,7 @@ public class DangNhap extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -168,11 +169,11 @@ public class DangNhap extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton dangnhap;
+    public javax.swing.JButton dangnhap;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JPasswordField matkhau;
-    private javax.swing.JTextField taikhoan;
+    public static javax.swing.JTextField taikhoan;
     private javax.swing.JButton welcome;
     // End of variables declaration//GEN-END:variables
 }
