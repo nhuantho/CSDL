@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `capnhatloikhuyen` (
   `IDAdmin` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `TheTrang` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `NgayCapNhat` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`IDAdmin`,`TheTrang`) USING BTREE,
+  PRIMARY KEY (`IDAdmin`,`TheTrang`,`NgayCapNhat`) USING BTREE,
   KEY `FK_capnhatloikhuyen_loikhuyen` (`TheTrang`),
   CONSTRAINT `FK_capnhatloikhuyen_admin` FOREIGN KEY (`IDAdmin`) REFERENCES `admin` (`IDAdmin`),
   CONSTRAINT `FK_capnhatloikhuyen_loikhuyen` FOREIGN KEY (`TheTrang`) REFERENCES `loikhuyen` (`TheTrang`)
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
   PRIMARY KEY (`UserID`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table quanlisuckhoe.taikhoan: ~9 rows (approximately)
+-- Dumping data for table quanlisuckhoe.taikhoan: ~8 rows (approximately)
 /*!40000 ALTER TABLE `taikhoan` DISABLE KEYS */;
 INSERT INTO `taikhoan` (`UserID`, `MatKhau`) VALUES
 	('admin', '12345'),
