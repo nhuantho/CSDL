@@ -81,9 +81,9 @@ CREATE TABLE IF NOT EXISTS `loikhuyen` (
 CREATE TABLE IF NOT EXISTS `nhapthongtinvaloikhuyen` (
   `UserID` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `Day` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ChieuCao` int NOT NULL,
-  `CanNang` int NOT NULL,
-  `BMI` float NOT NULL,
+  `ChieuCao` double NOT NULL DEFAULT '0',
+  `CanNang` double NOT NULL DEFAULT '0',
+  `BMI` double NOT NULL DEFAULT '0',
   `TheTrang` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`UserID`,`Day`),
   KEY `FK_nhapthongtinvaloikhuyen_loikhuyen` (`TheTrang`),
