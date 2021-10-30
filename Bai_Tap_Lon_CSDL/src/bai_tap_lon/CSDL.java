@@ -32,7 +32,7 @@ public class CSDL {
         return null;
     }
     //in dữ liệu lấy từ mysql
-    public void statement(){
+    public static void statement(){
         try{
             Statement sta=jdbcConnection().createStatement();
             String select="SELECT * FROM user";
@@ -52,7 +52,7 @@ public class CSDL {
         
     }
     //kiểm tra tài khoản
-    public boolean statement_kiemtrataikhoan(String taikhoan){
+    public static boolean statement_kiemtrataikhoan(String taikhoan){
         try {
             Statement sta=jdbcConnection().createStatement();
             String where="SELECT UserID FROM taikhoan";
@@ -66,7 +66,7 @@ public class CSDL {
         return false;
     }
     //kiểm tra mật khẩu
-    public boolean statement_kiemtramatkhau(String matkhau){
+    public static boolean statement_kiemtramatkhau(String matkhau){
         try {
             Statement sta=jdbcConnection().createStatement();
             String where="SELECT MatKhau FROM taikhoan";
@@ -80,7 +80,7 @@ public class CSDL {
         return false;
     }
     //đưa dữ liệu về bảng user của cơ sở dữ liệu mysql
-    public boolean insert_into_user(String id, String hodem, String ten, String ngaysinh, String diachi, String sdt){
+    public static boolean insert_into_user(String id, String hodem, String ten, String ngaysinh, String diachi, String sdt){
         try {
             if(id.equalsIgnoreCase("")==true|| hodem.equalsIgnoreCase("")==true|| ten.equalsIgnoreCase("")==true|| ngaysinh.equalsIgnoreCase("")==true|| diachi.equalsIgnoreCase("")==true|| sdt.equalsIgnoreCase("")==true) 
                 return false;
@@ -101,7 +101,7 @@ public class CSDL {
         return false;
     }
     //đưa dữ liệu về bảng admin của cơ sở dữ liệu mysql
-    public boolean insert_into_admin(String id, String hoten, String SDT, String email){
+    public static boolean insert_into_admin(String id, String hoten, String SDT, String email){
         try {
             if(id.equalsIgnoreCase("")==true|| hoten.equalsIgnoreCase("")==true|| SDT.equalsIgnoreCase("")==true|| email.equalsIgnoreCase("")==true) 
                 return false;
@@ -120,7 +120,7 @@ public class CSDL {
         return false;
     }
     //đưa dữ liệu về bảng tài khoản của mysql
-     public boolean insert_into_taikhoan(String id, String matkhau){
+     public static boolean insert_into_taikhoan(String id, String matkhau){
         try {
             if(id.equalsIgnoreCase("")==true|| matkhau.equalsIgnoreCase("")==true) 
                 return false;
