@@ -38,10 +38,10 @@ public class CSDL {
             String select="SELECT * FROM user";
             ResultSet re=sta.executeQuery(select);
             while (re.next()) {                
-                int useeid=re.getInt("UserID");
+                String useeid=re.getString("UserID");
                 String hodem=re.getString("HoDem");
                 String ten=re.getString("Ten");
-                Date date=re.getDate("NgaySinh");
+                String date=re.getString("NgaySinh");
                 String diachi=re.getString("DiaChi");
                 String sdt=re.getString("SDT");
                 System.out.println(useeid+" "+hodem+" "+ten+" "+date+" "+diachi+" "+sdt);
