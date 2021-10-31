@@ -73,10 +73,11 @@ CREATE TABLE IF NOT EXISTS `loikhuyen` (
   PRIMARY KEY (`TheTrang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table quanlisuckhoe.loikhuyen: ~0 rows (approximately)
+-- Dumping data for table quanlisuckhoe.loikhuyen: ~2 rows (approximately)
 /*!40000 ALTER TABLE `loikhuyen` DISABLE KEYS */;
 INSERT INTO `loikhuyen` (`TheTrang`, `TapLuyen`, `DinhDuong`) VALUES
-	('Bình thường', 'Nên tập luyện 30 phút mỗi ngày để duy trì sức khỏe', 'Ăn uống điều độ, hạn chế rượu bia, thuốc lá');
+	('Bình thường', 'Nên tập luyện 30 phút mỗi ngày để duy trì sức khỏe', 'Ăn uống điều độ, hạn chế rượu bia, thuốc lá'),
+	('Gầy', 'Nên ăn nhiều', 'Ăn nhiều');
 /*!40000 ALTER TABLE `loikhuyen` ENABLE KEYS */;
 
 -- Dumping structure for table quanlisuckhoe.nhapthongtinvaloikhuyen
@@ -93,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `nhapthongtinvaloikhuyen` (
   CONSTRAINT `FK_nhapthongtinvaloikhuyen_user` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table quanlisuckhoe.nhapthongtinvaloikhuyen: ~0 rows (approximately)
+-- Dumping data for table quanlisuckhoe.nhapthongtinvaloikhuyen: ~3 rows (approximately)
 /*!40000 ALTER TABLE `nhapthongtinvaloikhuyen` DISABLE KEYS */;
 INSERT INTO `nhapthongtinvaloikhuyen` (`UserID`, `Day`, `ChieuCao`, `CanNang`, `BMI`, `TheTrang`) VALUES
 	('nhuan1234', 'java.text.SimpleDateFormat@d936eac0', 1.6, 65, 20.3125, 'Bình thường'),
