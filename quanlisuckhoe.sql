@@ -69,12 +69,14 @@ CREATE TABLE IF NOT EXISTS `capnhattrungtam` (
 CREATE TABLE IF NOT EXISTS `loikhuyen` (
   `TheTrang` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `TapLuyen` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Đinhuong` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `DinhDuong` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`TheTrang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table quanlisuckhoe.loikhuyen: ~0 rows (approximately)
 /*!40000 ALTER TABLE `loikhuyen` DISABLE KEYS */;
+INSERT INTO `loikhuyen` (`TheTrang`, `TapLuyen`, `DinhDuong`) VALUES
+	('Bình thường', 'Nên tập luyện 30 phút mỗi ngày để duy trì sức khỏe', 'Ăn uống điều độ, hạn chế rượu bia, thuốc lá');
 /*!40000 ALTER TABLE `loikhuyen` ENABLE KEYS */;
 
 -- Dumping structure for table quanlisuckhoe.nhapthongtinvaloikhuyen
@@ -93,6 +95,10 @@ CREATE TABLE IF NOT EXISTS `nhapthongtinvaloikhuyen` (
 
 -- Dumping data for table quanlisuckhoe.nhapthongtinvaloikhuyen: ~0 rows (approximately)
 /*!40000 ALTER TABLE `nhapthongtinvaloikhuyen` DISABLE KEYS */;
+INSERT INTO `nhapthongtinvaloikhuyen` (`UserID`, `Day`, `ChieuCao`, `CanNang`, `BMI`, `TheTrang`) VALUES
+	('nhuan1234', 'java.text.SimpleDateFormat@d936eac0', 1.6, 65, 20.3125, 'Bình thường'),
+	('nhuan12345', 'java.text.SimpleDateFormat@d936eac0', 1.6, 65, 20.3125, 'Bình thường'),
+	('nhuan123456', '31/10/2021', 1.6, 65, 20.3125, 'Bình thường');
 /*!40000 ALTER TABLE `nhapthongtinvaloikhuyen` ENABLE KEYS */;
 
 -- Dumping structure for table quanlisuckhoe.taikhoan
@@ -106,7 +112,6 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
 /*!40000 ALTER TABLE `taikhoan` DISABLE KEYS */;
 INSERT INTO `taikhoan` (`UserID`, `MatKhau`) VALUES
 	('admin', '12345'),
-	('nhuan12', '12345'),
 	('nhuan1234', '12345'),
 	('nhuan12345', '12345'),
 	('nhuan123456', '1234'),
