@@ -73,11 +73,17 @@ CREATE TABLE IF NOT EXISTS `loikhuyen` (
   PRIMARY KEY (`TheTrang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table quanlisuckhoe.loikhuyen: ~2 rows (approximately)
+-- Dumping data for table quanlisuckhoe.loikhuyen: ~8 rows (approximately)
 /*!40000 ALTER TABLE `loikhuyen` DISABLE KEYS */;
 INSERT INTO `loikhuyen` (`TheTrang`, `TapLuyen`, `DinhDuong`) VALUES
-	('Bình thường', 'Nên tập luyện 30 phút mỗi ngày để duy trì sức khỏe', 'Ăn uống điều độ, hạn chế rượu bia, thuốc lá'),
-	('Gầy', 'Nên ăn nhiều', 'Ăn nhiều');
+	('Béo phì độ I', 'Hãy bắ đầu ngay vào luyện tập trước khi quá muộn. Bạn nên bắt đầu bằng những bài tập cario như đi bộ, nhảy dây, chạy bộ, những bài hit với cường độ chậm.', 'Hãy cắt giảm dần lượng đồ ăn mỗi bữa ăn. Nên ăn đồ luộc, không nên ăn đồ chiên rán nhiều dầu mỡ. '),
+	('Béo phì độ II', 'Bạn đang ở tình trạng sức khỏe đang rất xấu. Vì vậy bạn cần phải luyện tập ngay từ ngày hôm nay. Bạn nên tập những bài tập nhẹ trước vì thể lực của bạn lúc này đang rất kém. Sẽ tăng cường độ tập luyện sau mỗi ngày để có thể giảm cân hiệu quá.', 'Bạn nên có một chế độ dinh dưỡng khắt khe với bản thân. Hãy ăn những đồ ăn tốt như khoai lang, ức gà, ăn nhiều ra xanh. Và nên chia nhỏ bữa ăn trong ngày, mỗi bữa ăn ít và ăn nhiều bữa, như vậy sẽ giúp bạn có thể quen dần giảm lượng thức ăn nạp vào.'),
+	('Béo phì độ III', 'Bạn đang ở một tình trạng sức khỏe rất tệ, khả năng tập luyện của bạn là rất kém. Nên để có thể giảm cân hiệu quả, bạn hãy tham khảo các trung tâm gần nơi bạn ở mà app cung cấp. Như vậy bạn sẽ có thể có một chế độ tập luyện khoa học.', 'Chế độ dinh dưỡng chiếm 70% trong quá trình giảm cân. Nên khi bạn đến các trung tâm sẽ được hướng dẫn chế độ ăn hợp lí. Từ đó, giúp bạn giảm cân nhanh chóng và hiệu quả.'),
+	('Bình thường', 'Nếu bạn đang ở thể trạng như vậy thì bạn đang có một thể trạng khá tốt. Tuy nhiên bạn nên luyện tập hàng ngày để có thể duy trì được thể trạng tốt như thế này.', 'Bạn có thể áp dụng dinh dưỡng điều độ bình thường với gia đình. Hạn chế rượu bia, thuốc là, các chất gây hại.'),
+	('Thếu cân nặng', 'Với thể trạng này, bạn có thể đến với một nhóm luyện tập, để có thể được cái bạn chia sẻ phương pháp luyện tập. Hoặc bạn có thể khởi động làm nóng cơ 30 phút mỗi ngày, để cơ bắp được kích thích.', 'Bạn có thể ăn uống theo chế độ chia nhỏ bữa ăn mỗi ngày. Ăn thật nhiều, và đừng để cơ thể bị đói.'),
+	('Thiếu cân rất nặng', 'Tình trạng này thì cơ thể đang rất yếu, nên sẽ bắt đầu tập luyện bằng các bài tập nhẹ khởi động để cơ thể có thể làm quen dần với cường độ tập. Có thể chỉ cần tập 30 phút mỗi ngày để cơ bắt được tác động và phát triển. Bạn nên đến một huấn luyện viên chuyên nghiệp để có thể được tư vấn tốt hơn.', 'Với người gầy như thế này bạn nên chia nhỏ các bữa anh mỗi ngày ra(tầm 5-6 bữa/trên ngày). Như vậy bạn có thể bổ xung năng lượng liên tục trong ngày.'),
+	('Thừa cân', 'Bạn đang ở mức độ không quá xấu, vậy nên bạn cần nhanh chóng luyện tập mỗi ngày. Để cơ thể khỏe và trở về trạng thái bình thường.', 'Hạn chế ăn đồ dầu mỡ, giảm đi bớt các đồ ăn nhiều calo. '),
+	('Tiền béo phì', 'Bạn đang bắt đầu trở thành một người đang ở trạng thái báo động. Nên các bạn hãy luyện tập mỗi ngày, có thể thì hãy tham gia cùng một đội nhóm để có những buổi tập chất lượng.', 'Hạn chế ăn nhiều đồ ăn dầu mỡ, giảm dần lượng thức ăn nạp vào mỗi ngày.');
 /*!40000 ALTER TABLE `loikhuyen` ENABLE KEYS */;
 
 -- Dumping structure for table quanlisuckhoe.nhapthongtinvaloikhuyen
@@ -94,12 +100,8 @@ CREATE TABLE IF NOT EXISTS `nhapthongtinvaloikhuyen` (
   CONSTRAINT `FK_nhapthongtinvaloikhuyen_user` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table quanlisuckhoe.nhapthongtinvaloikhuyen: ~3 rows (approximately)
+-- Dumping data for table quanlisuckhoe.nhapthongtinvaloikhuyen: ~0 rows (approximately)
 /*!40000 ALTER TABLE `nhapthongtinvaloikhuyen` DISABLE KEYS */;
-INSERT INTO `nhapthongtinvaloikhuyen` (`UserID`, `Day`, `ChieuCao`, `CanNang`, `BMI`, `TheTrang`) VALUES
-	('nhuan1234', 'java.text.SimpleDateFormat@d936eac0', 1.6, 65, 20.3125, 'Bình thường'),
-	('nhuan12345', 'java.text.SimpleDateFormat@d936eac0', 1.6, 65, 20.3125, 'Bình thường'),
-	('nhuan123456', '31/10/2021', 1.6, 65, 20.3125, 'Bình thường');
 /*!40000 ALTER TABLE `nhapthongtinvaloikhuyen` ENABLE KEYS */;
 
 -- Dumping structure for table quanlisuckhoe.taikhoan
@@ -126,22 +128,52 @@ INSERT INTO `taikhoan` (`UserID`, `MatKhau`) VALUES
 CREATE TABLE IF NOT EXISTS `trungtam` (
   `IDTrungTam` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `TenTrungTam` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `DiaChi` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `DiaChi-Tinh` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `DiaChi-CuThe` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `SoDienThoai` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`IDTrungTam`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table quanlisuckhoe.trungtam: ~0 rows (approximately)
+-- Dumping data for table quanlisuckhoe.trungtam: ~29 rows (approximately)
 /*!40000 ALTER TABLE `trungtam` DISABLE KEYS */;
+INSERT INTO `trungtam` (`IDTrungTam`, `TenTrungTam`, `DiaChi-Tinh`, `DiaChi-CuThe`, `SoDienThoai`) VALUES
+	('HNAKFPHT', 'AK Fitness Phạm Hồng Thái', 'Hà Nội', '28A Phạm Hồng Thái, Ba Đình', '0916001686'),
+	('HNAUFNK', 'Aesthetic Ultimate Fitness Ngọc Khánh', 'Hà Nội', 'Tầng 5, số 168 Ngọc Khánh, Ba Đình', '0934486567'),
+	('HNBEF&Y', 'BigBox Energy Fitness & Yoga', 'Hà Nội', 'Số 1 Phạm Huy Thông, Ngọc Khánh, Ba Đình', '02439532222'),
+	('HNBGPVD', 'Blue Gym', 'Hà Nội', 'Tầng 03- 2T – Số 09 Phạm Văn Đồng, Doãn Kế Thiện', '0933570990'),
+	('HNBSF&Y', 'Body Style Fitness & Yoga', 'Hà Nội', '343 Đội Cấn, phường Liễu Giai, quận Ba Đình', '0989199180'),
+	('HNC2G', 'C2 Gym', 'Hà Nội', '93A Cầu Giấy, Quan Hoa, Cầu Giấy', '01666990000'),
+	('HNCFN', 'California', 'Hà Nội', 'Tầng 3 & Tầng 4, Tòa nhà Long Giang, 173 Xuân Thủy', '02473094999'),
+	('HNDCGC', 'Duy Charly Gym Club', 'Hà Nội', '1070 Đê La Thành, Ngọc Khánh, Ba Đình', '0937327273'),
+	('HNGC', 'Gin’s Class', 'Hà Nội', 'Tầng 5 nhà C số 22 Thành Công', '01252971965'),
+	('HNGCKM', 'Gym CURVES Kim Mã', 'Hà Nội', 'Tầng 2, tòa nhà DMC, 535 Kim Mã, Ba Đình', '02437246760'),
+	('HNGCLH', 'Gym Curves Láng Hạ', 'Hà Nội', 'Tầng 6, số 8 Láng Hạ, Thành Công, Ba Đình', '0962284042'),
+	('HNGCTH', 'Gym Curves Trung Hòa', 'Hà Nội', 'Tầng 3 – 29T2 Hoàng Đạo Thúy, Trung Hòa, Cầu Giấy', '0367298952'),
+	('HNGMDFLF', 'Gym MD FITNESS – Life Fitness', 'Hà Nội', 'TẦNG 2 TÒA NHÀ CT1 VIMECO NGUYỄN CHÁNH, Cầu Giấy', '0916099666'),
+	('HNGMDFLFVC', 'Gym MD FITNESS – Life Fitness Văn Cao', 'Hà Nội', 'Ngã tư Văn Cao, Thụy Khuê, Ba Đình', '0916099666'),
+	('HNGMF', 'Gym M-Fitness', 'Hà Nội', '163 Hoàng Ngân, Trung Hòa, Cầu Giấy', '0961184389'),
+	('HNGTCG', 'Gym Texas Cầu Giấy', 'Hà Nội', '76 Duy Tân, Cầu Giấy', '0977198484'),
+	('HNGTHTVF', 'Gym Thể Hình Tuấn Vũ Fitness', 'Hà Nội', 'Tầng 4 tòa nhà Kim Long, 22 Thành Công, Ba Đình', '0917510022'),
+	('HNGTVF', 'Gym Tuấn vũ Fitness', 'Hà Nội', 'Tầng 1 toà nhà N4C Trung Hoà, Nhân Chính', '0936074626'),
+	('HNGTVF&YC', 'Gym Tuan Vu Fitness & Yoga Center', 'Hà Nội', '139 Cầu Giấy', '0917510022'),
+	('HNHGNTH', 'Heros Gym Nguyễn Thái Học', 'Hà Nội', '7 nguyễn thái học, quận Ba Đình', '0857099009'),
+	('HNLNF', 'Lightning Fitness', 'Hà Nội', '189 Hoàng Hoa Thám, Ba Đình', '0979012887'),
+	('HNMG&TVF', 'Master Gym & Tuấn Vũ Fitness', 'Hà Nội', ' Số 6 Trần Quốc Hoàn, Cầu Giấy', '0942864555'),
+	('HNPSF&Y', 'Prana Star Fitness & Yoga', 'Hà Nội', 'Tầng M, tháp Ngôi Sao, Dương Đình Nghệ, Cầu Giấy', '02462949966'),
+	('HNSBD', 'Swequity Ba Đình', 'Hà Nội', '523 Kim Mã, Ba Đình', '0965963131'),
+	('HNTGBD', 'TopGym quận Ba Đình', 'Hà Nội', 'SỐ 1A, Nguyễn Khắc Nhu, Phường Trúc Bạch, Ba Đình ', '0971011768'),
+	('HNTLHNK', 'Thăng Long HN Kendo', 'Hà Nội', 'Ngõ 140 Giảng Võ', '0932311357'),
+	('HNTTGCHHT', 'TITAN GYM CLUB Hoàng Hoa Thám', 'Hà Nội', '722 Hoàng Hoa Thám, Ba Đình', '0947796447'),
+	('HNUY&D', 'UNIFY yoga & dance', 'Hà Nội', '299 Trung Kính, Yên Hòa, Cầu Giấy', '0911225639'),
+	('HNVF&YHHT', 'Vital Fitness & Yoga Hoàng Hoa Thám', 'Hà Nội', 'Tầng 4 tòa nhà 671 Hoàng Hoa Thám, Ba Đình', '0948881683');
 /*!40000 ALTER TABLE `trungtam` ENABLE KEYS */;
 
 -- Dumping structure for table quanlisuckhoe.user
 CREATE TABLE IF NOT EXISTS `user` (
-  `UserID` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'AUTO_INCREMENT',
+  `UserID` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `HoDem` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `Ten` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `NgaySinh` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `NgaySinh` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `DiaChi` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `SDT` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`UserID`)
