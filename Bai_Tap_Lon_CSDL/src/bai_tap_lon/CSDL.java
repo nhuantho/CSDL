@@ -24,7 +24,7 @@ public class CSDL {
     public static Connection jdbcConnection(){
         String url="jdbc:mysql://localhost:3306/quanlisuckhoe";
         String user="root";
-        String password = "Anhdungvk01";
+        String password = "01062001";
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(url, user, password);
@@ -163,11 +163,5 @@ public class CSDL {
             Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
         }
         return false;
-    }
-    public void setUserID(String UserID){
-        this.UserID=DangNhap.taikhoan.getText();
-    }
-    public String getUserID(){
-        return this.UserID;
     }
 }
