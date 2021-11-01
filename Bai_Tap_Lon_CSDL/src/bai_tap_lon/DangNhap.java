@@ -19,7 +19,12 @@ public class DangNhap extends javax.swing.JFrame {
     public DangNhap() {
         initComponents();
     }
-
+    
+    public String getUserID() {
+        String id = taikhoan.getText();
+        return id;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,6 +129,8 @@ public class DangNhap extends javax.swing.JFrame {
     //ấn vào đăng nhập để vào trang chủ người dùng
     private void dangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dangnhapActionPerformed
         if(CSDL.statement_kiemtrataikhoan(taikhoan.getText())==true && CSDL.statement_kiemtramatkhau(matkhau.getText())==true){
+            String tempId = taikhoan.getText();
+            
             TrangChuUser tcuse=new TrangChuUser();
             tcuse.setVisible(true);
             this.dispose();

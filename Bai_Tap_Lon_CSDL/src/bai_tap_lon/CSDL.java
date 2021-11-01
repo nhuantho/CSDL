@@ -137,7 +137,23 @@ public class CSDL {
      
      
     // Hiển thị thông tin người dùng
-     public static void statement_hienthithongtin() {
-         
-     }
+//     public static void statement_hienthithongtin() {
+//         try{
+//            Statement sta=jdbcConnection().createStatement();
+//            String select="SELECT * FROM user WHERE UserID = '?'";
+//            PreparedStatement ps=jdbcConnection().prepareStatement(select);
+//            ps.setString(1, id);
+//            ResultSet re=sta.executeQuery(select);
+//            while (re.next()) {                
+//                int userid=re.getInt("UserID");
+//                String hodem=re.getString("HoDem");
+//                String ten=re.getString("Ten");
+//                Date date=re.getDate("NgaySinh");
+//                String diachi=re.getString("DiaChi");
+//                String sdt=re.getString("SDT");
+//            }
+//        }catch(SQLException e){
+//            System.out.println(e);
+//        }
+//     }
 }
