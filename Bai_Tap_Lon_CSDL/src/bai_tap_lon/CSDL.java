@@ -16,11 +16,19 @@ import java.util.logging.Logger;
 
 
 public class CSDL {
+    private String UserID;
+    public CSDL(){
+        
+    }
     //gọi 1 cơ sở dữ liệu mysql
     public static Connection jdbcConnection(){
         String url="jdbc:mysql://localhost:3306/quanlisuckhoe";
         String user="root";
+<<<<<<< HEAD
         String password = "5122001t";
+=======
+        String password = "01062001";
+>>>>>>> main
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(url, user, password);
@@ -36,10 +44,10 @@ public class CSDL {
             String select="SELECT * FROM user";
             ResultSet re=sta.executeQuery(select);
             while (re.next()) {                
-                int useeid=re.getInt("UserID");
+                String useeid=re.getString("UserID");
                 String hodem=re.getString("HoDem");
                 String ten=re.getString("Ten");
-                Date date=re.getDate("NgaySinh");
+                String date=re.getString("NgaySinh");
                 String diachi=re.getString("DiaChi");
                 String sdt=re.getString("SDT");
                 System.out.println(useeid+" "+hodem+" "+ten+" "+date+" "+diachi+" "+sdt);
@@ -134,10 +142,37 @@ public class CSDL {
         }
         return false;
     }
+<<<<<<< HEAD
      
      
     // Hiển thị thông tin người dùng
      public static void statement_hienthithongtin() {
          
      }
+=======
+    //nhap thong tin hang ngay vao co so du lieu by tanhdz
+    public static boolean insert_into_nhap_thong_tin_hang_ngay(String UserId,String day,String CanNang,String ChieuCao,String BMI,String TheTrang){
+        try{
+            if(ChieuCao.equalsIgnoreCase("")==true||CanNang.equalsIgnoreCase("")==true) return false;
+            String insert="insert into nhapthongtinvaloikhuyen values(?,?,?,?,?,?)";
+            PreparedStatement ps=jdbcConnection().prepareStatement(insert);
+            ps.setString(1, UserId);
+            ps.setString(2, day);
+            Double chieucao=Double.valueOf(ChieuCao);//format sang by tanhdz
+            Double cannang=Double.valueOf(CanNang);
+            Double bmi=Double.valueOf(BMI);
+            ps.setDouble(3, cannang);
+            ps.setDouble(4, chieucao);
+            ps.setDouble(5, bmi);
+            ps.setString(6, TheTrang);
+            int n=ps.executeUpdate();
+            if(n!=0)return true;
+            return false;
+            //cap nhat xong by tanhdz
+        } catch(SQLException e){
+            Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+>>>>>>> main
 }

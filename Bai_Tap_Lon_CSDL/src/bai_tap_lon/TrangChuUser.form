@@ -27,24 +27,24 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="342" max="-2" attributes="0"/>
-                      <Component id="trangchu" min="-2" pref="183" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lichsu" alignment="0" min="-2" pref="423" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="ttnguoidung" pref="423" max="32767" attributes="0"/>
-                              <Component id="goiybaitap" max="32767" attributes="0"/>
                               <Component id="trungtamgan" max="32767" attributes="0"/>
-                              <Component id="nhaptt" max="32767" attributes="0"/>
+                              <Component id="nhaptt" pref="423" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="goiybaitap" alignment="1" min="-2" pref="423" max="-2" attributes="0"/>
+                          <Component id="ttnguoidung" alignment="1" min="-2" pref="423" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="352" max="-2" attributes="0"/>
                       <Component id="thoat" min="-2" pref="139" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="338" max="-2" attributes="0"/>
+                      <Component id="trangchu" min="-2" pref="183" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="234" max="32767" attributes="0"/>
@@ -54,13 +54,13 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="trangchu" min="-2" pref="61" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="ttnguoidung" min="-2" pref="67" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Component id="goiybaitap" min="-2" pref="71" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="trungtamgan" min="-2" pref="73" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="nhaptt" min="-2" pref="68" max="-2" attributes="0"/>
@@ -123,6 +123,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Nh&#x1ead;p th&#xf4;ng tin h&#xe0;ng ng&#xe0;y"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nhapttActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="trangchu">
       <Properties>
