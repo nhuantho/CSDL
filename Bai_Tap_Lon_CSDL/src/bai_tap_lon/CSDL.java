@@ -24,7 +24,7 @@ public class CSDL {
     public static Connection jdbcConnection(){
         String url="jdbc:mysql://localhost:3306/quanlisuckhoe";
         String user="root";
-        String password = "01062001";
+        String password = "Anhdungvk01";
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(url, user, password);
@@ -42,10 +42,10 @@ public class CSDL {
             String select="SELECT * FROM user";
             ResultSet re=sta.executeQuery(select);
             while (re.next()) {                
-                int useeid=re.getInt("UserID");
+                String useeid=re.getString("UserID");
                 String hodem=re.getString("HoDem");
                 String ten=re.getString("Ten");
-                Date date=re.getDate("NgaySinh");
+                String date=re.getString("NgaySinh");
                 String diachi=re.getString("DiaChi");
                 String sdt=re.getString("SDT");
                 System.out.println(useeid+" "+hodem+" "+ten+" "+date+" "+diachi+" "+sdt);
