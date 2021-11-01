@@ -16,6 +16,10 @@ import java.util.Calendar;
 import java.time.*;
 import java.awt.event.*; 
 import java.awt.*;  
+import java.io.*;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
     public Nhap_Thong_Tin_Hang_Ngay() {
         initComponents();
@@ -133,8 +137,12 @@ public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
     }//GEN-LAST:event_nhap_can_nangActionPerformed
     //lay time
     private String getTime(){
-        java.util.Date date=Calendar.getInstance().getTime(); 
-        return String.valueOf(date);
+        LocalDateTime myDateObj = LocalDateTime.now();
+        System.out.println("Before formatting: " + myDateObj);
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        String formattedDate = myDateObj.format(myFormatObj);
+        return formattedDate;
     }
     //lay bmi
     private String getBMI(){
@@ -161,8 +169,21 @@ public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
         // TODO add your handling code here:
         int dk=JOptionPane.showConfirmDialog(this,"Bạn có muốn lưu thông tin","Đồng ý",JOptionPane.YES_NO_CANCEL_OPTION);
         if(dk!=JOptionPane.YES_OPTION) return;
-        CSDL btl=new CSDL();
-        if(CSDL.insert_into_nhap_thong_tin_hang_ngay(btl.getUserID(), getTime(), nhap_can_nang.getText(), nhap_chieu_cao.getText(), getBMI(), TheTrang())==true){
+        String s="";
+        FileReader fr;
+        try {
+            fr = new FileReader("src\\bai_tap_lon\\tanh.txt");
+            int i;
+            while((i=fr.read())!=-1){
+                s+= (char)i;
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Nhap_Thong_Tin_Hang_Ngay.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Nhap_Thong_Tin_Hang_Ngay.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(s);
+        if(CSDL.insert_into_nhap_thong_tin_hang_ngay(s, getTime(), nhap_can_nang.getText(), nhap_chieu_cao.getText(), getBMI(), TheTrang())==true){
             TrangChuUser trangchu=new TrangChuUser();
             trangchu.setVisible(true);
             this.dispose();

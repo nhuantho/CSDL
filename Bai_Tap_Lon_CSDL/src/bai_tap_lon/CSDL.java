@@ -164,10 +164,4 @@ public class CSDL {
         }
         return false;
     }
-    public void setUserID(String UserID){
-        this.UserID=DangNhap.taikhoan.getText();
-    }
-    public String getUserID(){
-        return this.UserID;
-    }
 }
