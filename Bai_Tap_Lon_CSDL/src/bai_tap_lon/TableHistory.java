@@ -153,14 +153,24 @@ public class TableHistory extends javax.swing.JFrame {
         String[] tmp1 = s1.split("-");
         String[] tmp2 = s2.split("-");
         String[] tmp = date.split("-");
-        
-        if(Integer.valueOf(tmp1[2]) == Integer.valueOf(tmp[2]) && Integer.valueOf(tmp[2]) == Integer.valueOf(tmp2[2])){
-            if(Integer.valueOf(tmp1[1]) == Integer.valueOf(tmp[1]) && Integer.valueOf(tmp[1]) == Integer.valueOf(tmp2[1])){
-                return Integer.valueOf(tmp1[0]) <= Integer.valueOf(tmp[0]) && Integer.valueOf(tmp[0]) <= Integer.valueOf(tmp2[0]);
+        if(Integer.valueOf(tmp1[2]) ==  Integer.valueOf(tmp2[2])){
+            if(Integer.valueOf(tmp1[1]) == Integer.valueOf(tmp2[1])){
+                if(Integer.valueOf(tmp1[0]) == Integer.valueOf(tmp2[0])){
+                    return Integer.valueOf(tmp[0]) == Integer.valueOf(tmp1[0]) 
+                            && Integer.valueOf(tmp[1]) == Integer.valueOf(tmp1[1])
+                            && Integer.valueOf(tmp[2]) == Integer.valueOf(tmp1[2]);
+                }
+                return Integer.valueOf(tmp1[0]) <= Integer.valueOf(tmp[0]) && Integer.valueOf(tmp[0]) <= Integer.valueOf(tmp2[0])
+                        && Integer.valueOf(tmp[1]) == Integer.valueOf(tmp1[1])
+                        && Integer.valueOf(tmp[2]) == Integer.valueOf(tmp1[2]);
             }
-            return Integer.valueOf(tmp1[1]) <= Integer.valueOf(tmp[1]) && Integer.valueOf(tmp[1]) <= Integer.valueOf(tmp2[1]);
+            return Integer.valueOf(tmp1[0]) <= Integer.valueOf(tmp[0]) && Integer.valueOf(tmp[0]) <= Integer.valueOf(tmp2[0])
+                    && Integer.valueOf(tmp1[1]) <= Integer.valueOf(tmp[1]) && Integer.valueOf(tmp[1]) <= Integer.valueOf(tmp2[1])
+                    && Integer.valueOf(tmp[2]) == Integer.valueOf(tmp1[2]);
         }
-        return Integer.valueOf(tmp1[2]) <= Integer.valueOf(tmp[2]) && Integer.valueOf(tmp[2]) <= Integer.valueOf(tmp2[2]);
+        return Integer.valueOf(tmp1[0]) <= Integer.valueOf(tmp[0]) && Integer.valueOf(tmp[0]) <= Integer.valueOf(tmp2[0])
+                    && Integer.valueOf(tmp1[1]) <= Integer.valueOf(tmp[1]) && Integer.valueOf(tmp[1]) <= Integer.valueOf(tmp2[1])
+                    && Integer.valueOf(tmp1[2]) <= Integer.valueOf(tmp[2]) && Integer.valueOf(tmp[2]) <= Integer.valueOf(tmp2[2]);
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
