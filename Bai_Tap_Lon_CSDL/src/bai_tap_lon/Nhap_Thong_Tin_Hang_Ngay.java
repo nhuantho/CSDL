@@ -157,8 +157,8 @@ public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
         if(bmi>40) return "Béo phì độ III";
         else if(bmi>=35) return "Béo phì độ II";
         else if(bmi>=30) return "Béo phì độ I";
-        else if(bmi>=25) return "Thừa Cân";
-        else if(bmi>=18.5) return "Bình Thường";
+        else if(bmi>=25) return "Thừa cân";
+        else if(bmi>=18.5) return "Bình thường";
         else if(bmi>=17) return "Gầy độ 1";
         else if(bmi>=16) return "Gầy độ 2";
         else return "Gầy độ 3";
@@ -172,7 +172,7 @@ public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
         String s="";
         FileReader fr;
         try {
-            fr = new FileReader("src\\bai_tap_lon\\tanh.txt");
+            fr = new FileReader("src\\bai_tap_lon\\luuID.txt");
             int i;
             while((i=fr.read())!=-1){
                 s+= (char)i;
