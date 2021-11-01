@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `capnhatloikhuyen` (
   `IDAdmin` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `TheTrang` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `NgayCapNhat` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`IDAdmin`,`TheTrang`) USING BTREE,
+  PRIMARY KEY (`IDAdmin`,`TheTrang`,`NgayCapNhat`) USING BTREE,
   KEY `FK_capnhatloikhuyen_loikhuyen` (`TheTrang`),
   CONSTRAINT `FK_capnhatloikhuyen_admin` FOREIGN KEY (`IDAdmin`) REFERENCES `admin` (`IDAdmin`),
   CONSTRAINT `FK_capnhatloikhuyen_loikhuyen` FOREIGN KEY (`TheTrang`) REFERENCES `loikhuyen` (`TheTrang`)
@@ -69,21 +69,24 @@ CREATE TABLE IF NOT EXISTS `capnhattrungtam` (
 CREATE TABLE IF NOT EXISTS `loikhuyen` (
   `TheTrang` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `TapLuyen` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Đinhuong` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `DinhDuong` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`TheTrang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table quanlisuckhoe.loikhuyen: ~0 rows (approximately)
+-- Dumping data for table quanlisuckhoe.loikhuyen: ~2 rows (approximately)
 /*!40000 ALTER TABLE `loikhuyen` DISABLE KEYS */;
+INSERT INTO `loikhuyen` (`TheTrang`, `TapLuyen`, `DinhDuong`) VALUES
+	('Bình thường', 'Nên tập luyện 30 phút mỗi ngày để duy trì sức khỏe', 'Ăn uống điều độ, hạn chế rượu bia, thuốc lá'),
+	('Gầy', 'Nên ăn nhiều', 'Ăn nhiều');
 /*!40000 ALTER TABLE `loikhuyen` ENABLE KEYS */;
 
 -- Dumping structure for table quanlisuckhoe.nhapthongtinvaloikhuyen
 CREATE TABLE IF NOT EXISTS `nhapthongtinvaloikhuyen` (
   `UserID` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `Day` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ChieuCao` int NOT NULL,
-  `CanNang` int NOT NULL,
-  `BMI` float NOT NULL,
+  `ChieuCao` double NOT NULL DEFAULT '0',
+  `CanNang` double NOT NULL DEFAULT '0',
+  `BMI` double NOT NULL DEFAULT '0',
   `TheTrang` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`UserID`,`Day`),
   KEY `FK_nhapthongtinvaloikhuyen_loikhuyen` (`TheTrang`),
@@ -91,8 +94,12 @@ CREATE TABLE IF NOT EXISTS `nhapthongtinvaloikhuyen` (
   CONSTRAINT `FK_nhapthongtinvaloikhuyen_user` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table quanlisuckhoe.nhapthongtinvaloikhuyen: ~0 rows (approximately)
+-- Dumping data for table quanlisuckhoe.nhapthongtinvaloikhuyen: ~3 rows (approximately)
 /*!40000 ALTER TABLE `nhapthongtinvaloikhuyen` DISABLE KEYS */;
+INSERT INTO `nhapthongtinvaloikhuyen` (`UserID`, `Day`, `ChieuCao`, `CanNang`, `BMI`, `TheTrang`) VALUES
+	('nhuan1234', 'java.text.SimpleDateFormat@d936eac0', 1.6, 65, 20.3125, 'Bình thường'),
+	('nhuan12345', 'java.text.SimpleDateFormat@d936eac0', 1.6, 65, 20.3125, 'Bình thường'),
+	('nhuan123456', '31/10/2021', 1.6, 65, 20.3125, 'Bình thường');
 /*!40000 ALTER TABLE `nhapthongtinvaloikhuyen` ENABLE KEYS */;
 
 -- Dumping structure for table quanlisuckhoe.taikhoan
@@ -102,11 +109,10 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
   PRIMARY KEY (`UserID`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table quanlisuckhoe.taikhoan: ~9 rows (approximately)
+-- Dumping data for table quanlisuckhoe.taikhoan: ~8 rows (approximately)
 /*!40000 ALTER TABLE `taikhoan` DISABLE KEYS */;
 INSERT INTO `taikhoan` (`UserID`, `MatKhau`) VALUES
 	('admin', '12345'),
-	('nhuan12', '12345'),
 	('nhuan1234', '12345'),
 	('nhuan12345', '12345'),
 	('nhuan123456', '1234'),

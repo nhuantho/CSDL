@@ -5,6 +5,11 @@
  */
 package bai_tap_lon;
 
+import static bai_tap_lon.CSDL.jdbcConnection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
  * @author Nhuan's computer
@@ -52,10 +57,20 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         lstungtam.setBackground(new java.awt.Color(255, 102, 0));
         lstungtam.setForeground(new java.awt.Color(255, 255, 255));
         lstungtam.setText("Lịch sử thêm trung tâm");
+        lstungtam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lstungtamActionPerformed(evt);
+            }
+        });
 
         lsloikhuyen.setBackground(new java.awt.Color(255, 102, 0));
         lsloikhuyen.setForeground(new java.awt.Color(255, 255, 255));
         lsloikhuyen.setText("Lịch sử thêm lời khuyên");
+        lsloikhuyen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lsloikhuyenActionPerformed(evt);
+            }
+        });
 
         thoat.setBackground(new java.awt.Color(255, 102, 0));
         thoat.setForeground(new java.awt.Color(255, 255, 255));
@@ -107,13 +122,23 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     //ấn welcome để trở về welcome
     private void thoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thoatActionPerformed
-        Welcome wel=new Welcome();
+        Welcome wel = new Welcome();
         wel.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_thoatActionPerformed
+
+    private void lstungtamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lstungtamActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lstungtamActionPerformed
+
+    private void lsloikhuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lsloikhuyenActionPerformed
+        TableHistory T = new TableHistory();
+        T.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lsloikhuyenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,6 +171,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TrangChuAdmin().setVisible(true);
+                
             }
         });
     }
