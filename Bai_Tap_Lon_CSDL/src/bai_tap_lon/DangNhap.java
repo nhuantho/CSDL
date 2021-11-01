@@ -130,7 +130,7 @@ public class DangNhap extends javax.swing.JFrame {
         String s=taikhoan.getText();
         FileWriter fw;
         try {
-            fw = new FileWriter("D:\\tanh.txt");
+            fw = new FileWriter("src\\bai_tap_lon\\tanh.txt");
             fw.write(s);
             fw.close();
         } catch (IOException ex) {

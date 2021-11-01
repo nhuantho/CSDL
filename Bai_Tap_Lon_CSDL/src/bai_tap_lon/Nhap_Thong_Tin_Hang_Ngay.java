@@ -17,6 +17,7 @@ import java.time.*;
 import java.awt.event.*; 
 import java.awt.*;  
 import java.io.*;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
@@ -136,8 +137,12 @@ public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
     }//GEN-LAST:event_nhap_can_nangActionPerformed
     //lay time
     private String getTime(){
-        java.util.Date date=Calendar.getInstance().getTime(); 
-        return String.valueOf(date);
+        LocalDateTime myDateObj = LocalDateTime.now();
+        System.out.println("Before formatting: " + myDateObj);
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        String formattedDate = myDateObj.format(myFormatObj);
+        return formattedDate;
     }
     //lay bmi
     private String getBMI(){
@@ -167,7 +172,7 @@ public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
         String s="";
         FileReader fr;
         try {
-            fr = new FileReader("D:\\tanh.txt");
+            fr = new FileReader("src\\bai_tap_lon\\tanh.txt");
             int i;
             while((i=fr.read())!=-1){
                 s+= (char)i;
