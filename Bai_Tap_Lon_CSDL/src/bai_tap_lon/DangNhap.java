@@ -5,6 +5,10 @@
  */
 package bai_tap_lon;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -123,7 +127,15 @@ public class DangNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_welcomeActionPerformed
     //ấn vào đăng nhập để vào trang chủ người dùng
     private void dangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dangnhapActionPerformed
-
+        String s=taikhoan.getText();
+        FileWriter fw;
+        try {
+            fw = new FileWriter("D:\\tanh.txt");
+            fw.write(s);
+            fw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(DangNhap.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if(CSDL.statement_kiemtrataikhoan(taikhoan.getText())==true && CSDL.statement_kiemtramatkhau(matkhau.getText())==true){
             TrangChuUser tcuse=new TrangChuUser();
             tcuse.setVisible(true);
