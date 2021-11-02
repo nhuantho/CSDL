@@ -101,6 +101,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Th&#xea;m trung t&#xe2;m"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trungtamActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="lstungtam">
       <Properties>

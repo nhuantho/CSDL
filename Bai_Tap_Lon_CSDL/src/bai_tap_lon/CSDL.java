@@ -28,7 +28,7 @@ public class CSDL {
     public static Connection jdbcConnection(){
         String url="jdbc:mysql://localhost:3306/quanlisuckhoe";
         String user="root";
-        String password = "nt01247005688N";
+        String password = "01062001";
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(url, user, password);
@@ -189,5 +189,40 @@ public class CSDL {
         fw.close();
     }
     
-    
+    public static boolean insert_into_trungtam(String IDtrungtam,String TenTrungTam,String Tinh,String DiaChiCuThe,String sdt){
+        try{
+            if(IDtrungtam.equalsIgnoreCase("")||TenTrungTam.equalsIgnoreCase("")||Tinh.equalsIgnoreCase("")||DiaChiCuThe.equalsIgnoreCase("")||sdt.equalsIgnoreCase(""))
+                    return false;
+            String insert="insert into trungtam values(?,?,?,?,?)";
+            PreparedStatement ps=jdbcConnection().prepareStatement(insert);
+            ps.setString(1, IDtrungtam);
+            ps.setString(2, TenTrungTam);
+            ps.setString(3, Tinh);
+            ps.setString(4, DiaChiCuThe);
+            ps.setString(5, sdt);
+            int n=ps.executeUpdate();
+            if(n!=0)return true;
+            return false;
+        }
+        catch(SQLException e){
+            Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+    public static boolean insert_into_capnhattrungtam(String IDadmin,String IDTrungTam,String date){
+        try{
+            String insert="insert into capnhattrungtam values(?,?,?)";
+            PreparedStatement ps=jdbcConnection().prepareStatement(insert);
+            ps.setString(1, IDadmin);
+            ps.setString(2, IDTrungTam);
+            ps.setString(3, date);
+            int n=ps.executeUpdate();
+            if(n!=0)return true;
+            return false;
+        }
+        catch(SQLException e){
+            Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
 }
