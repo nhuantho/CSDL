@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,7 +29,7 @@ public class CSDL {
     public static Connection jdbcConnection(){
         String url="jdbc:mysql://localhost:3306/quanlisuckhoe";
         String user="root";
-        String password = "nt01247005688N";
+        String password = "5122001t";
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(url, user, password);
@@ -160,9 +161,8 @@ public class CSDL {
             ps.setDouble(5, bmi);
             ps.setString(6, TheTrang);
             int n=ps.executeUpdate();
-            if(n!=0)return true;
-            return false;
             //cap nhat xong by tanhdz
+            return n!=0;
         } catch(SQLException e){
             Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -189,5 +189,52 @@ public class CSDL {
         fw.close();
     }
     
-    
+    /**
+     *
+     * @return
+     * @throws IOException
+     */
+    public static Vector<String> statement_hien_thi_thong_tin_nguoi_dung() throws IOException {
+       Vector<String> res = new Vector<>();
+       try{
+            Statement sta=jdbcConnection().createStatement();
+            String select="SELECT user.*,\n" +
+                            "nhapthongtinvaloikhuyen.ChieuCao, nhapthongtinvaloikhuyen.CanNang, nhapthongtinvaloikhuyen.BMI, nhapthongtinvaloikhuyen.TheTrang, nhapthongtinvaloikhuyen.Day\n" +
+                            "FROM user, nhapthongtinvaloikhuyen \n" +
+                            "WHERE user.UserID = '?'\n" +
+                            "AND nhapthongtinvaloikhuyen.Day = (SELECT MAX(nhapthongtinvaloikhuyen.Day) FROM nhapthongtinvaloikhuyen);";
+            PreparedStatement ps=jdbcConnection().prepareStatement(select);
+            String id = ReadIDFromFile();
+            ps.setString(1, id);
+            ResultSet re=sta.executeQuery(select);
+            while (re.next()) {                
+                String userid=re.getString("UserID");
+                String hodem=re.getString("HoDem");
+                String ten=re.getString("Ten");
+                String hoten = "" + hodem + " " + ten;
+                String date=re.getString("NgaySinh");
+                String diachi=re.getString("DiaChi");
+                String sdt=re.getString("SDT");
+                String chieuCao = re.getString("ChieuCao");
+                String canNang = re.getString("CanNang");
+                String bmi = re.getString("BMI");
+                String theTrang = re.getString("TheTrang");
+                
+                System.out.println(userid+" "+hodem+" "+ten+" "+date+" "+diachi+" "+sdt + " " + chieuCao  + " " + canNang + " " + bmi + " " + theTrang);
+                
+                res.add(userid);
+                res.add(hoten);
+                res.add(date);
+                res.add(diachi);
+                res.add(sdt);
+                res.add(chieuCao);
+                res.add(canNang);
+                res.add(bmi);
+                res.add(theTrang);
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+       return res;
+   }
 }

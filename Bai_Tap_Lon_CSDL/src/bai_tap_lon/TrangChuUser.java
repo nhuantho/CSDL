@@ -153,6 +153,7 @@ public class TrangChuUser extends javax.swing.JFrame {
 
     private void ttnguoidungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttnguoidungActionPerformed
         // TODO add your handling code here:
+         
     }//GEN-LAST:event_ttnguoidungActionPerformed
 
     private void goiybaitapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goiybaitapActionPerformed
