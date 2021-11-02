@@ -42,8 +42,8 @@
                           <Component id="SDT" alignment="0" max="32767" attributes="0"/>
                           <Component id="email" alignment="0" max="32767" attributes="0"/>
                           <Component id="id" max="32767" attributes="0"/>
-                          <Component id="matkhau" max="32767" attributes="0"/>
-                          <Component id="nhaplaipass" alignment="1" pref="188" max="32767" attributes="0"/>
+                          <Component id="matkhau" alignment="0" max="32767" attributes="0"/>
+                          <Component id="nhaplaipass" alignment="0" pref="188" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -188,10 +188,6 @@
         <Property name="text" type="java.lang.String" value="M&#x1ead;t kh&#x1ea9;u"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="matkhau">
-    </Component>
-    <Component class="javax.swing.JPasswordField" name="nhaplaipass">
-    </Component>
     <Component class="javax.swing.JButton" name="dangnhap">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -205,6 +201,10 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dangnhapActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="matkhau">
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="nhaplaipass">
     </Component>
   </SubComponents>
 </Form>

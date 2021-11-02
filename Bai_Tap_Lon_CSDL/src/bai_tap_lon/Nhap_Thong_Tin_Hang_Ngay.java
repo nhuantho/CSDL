@@ -62,6 +62,19 @@ public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
             }
         });
 
+        nhap_chieu_cao.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                nhap_chieu_caoInputMethodTextChanged(evt);
+            }
+        });
+        nhap_chieu_cao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nhap_chieu_caoActionPerformed(evt);
+            }
+        });
+
         luu_thong_tin.setText("Lưu thông tin");
         luu_thong_tin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,7 +160,7 @@ public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
     private String getBMI(){
         double can_nang=Double.valueOf(nhap_can_nang.getText());
         double chieu_cao=Double.valueOf(nhap_chieu_cao.getText());
-        double bmi=(can_nang)/(chieu_cao*2);
+        double bmi=(can_nang)/(chieu_cao * chieu_cao / 10000);
         return String.valueOf(bmi);
     }
     //lay the trang
@@ -156,8 +169,8 @@ public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
         if(bmi>40) return "Béo phì độ III";
         else if(bmi>=35) return "Béo phì độ II";
         else if(bmi>=30) return "Béo phì độ I";
-        else if(bmi>=25) return "Thừa Cân";
-        else if(bmi>=18.5) return "Bình Thường";
+        else if(bmi>=25) return "Thừa cân";
+        else if(bmi>=18.5) return "Bình thường";
         else if(bmi>=17) return "Gầy độ 1";
         else if(bmi>=16) return "Gầy độ 2";
         else return "Gầy độ 3";
@@ -169,13 +182,8 @@ public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
         int dk=JOptionPane.showConfirmDialog(this,"Bạn có muốn lưu thông tin","Đồng ý",JOptionPane.YES_NO_CANCEL_OPTION);
         if(dk!=JOptionPane.YES_OPTION) return;
         String s="";
-        FileReader fr;
         try {
-            fr = new FileReader("src\\bai_tap_lon\\tanh.txt");
-            int i;
-            while((i=fr.read())!=-1){
-                s+= (char)i;
-            }
+            s = CSDL.ReadIDFromFile();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Nhap_Thong_Tin_Hang_Ngay.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -192,17 +200,23 @@ public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_luu_thong_tinActionPerformed
 
-    public void actionPerformed(ActionEvent e) {  
-        try{  
-        hien_thi_bmi.setText(getBMI());  
-        }catch(Exception ex){System.out.println(ex);}  
-    }  
     private void quay_laiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quay_laiActionPerformed
         // TODO add your handling code here:
         TrangChuUser trangchu=new TrangChuUser();
             trangchu.setVisible(true);
             this.dispose();
     }//GEN-LAST:event_quay_laiActionPerformed
+
+    private void nhap_chieu_caoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nhap_chieu_caoActionPerformed
+        // TODO add your handling code here:
+        try{  
+        hien_thi_bmi.setText(getBMI());  
+        }catch(Exception ex){System.out.println(ex);}  
+    }//GEN-LAST:event_nhap_chieu_caoActionPerformed
+
+    private void nhap_chieu_caoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_nhap_chieu_caoInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nhap_chieu_caoInputMethodTextChanged
 
     /**
      * @param args the command line arguments
