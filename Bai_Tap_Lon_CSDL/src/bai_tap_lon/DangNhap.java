@@ -128,14 +128,12 @@ public class DangNhap extends javax.swing.JFrame {
     //ấn vào đăng nhập để vào trang chủ người dùng
     private void dangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dangnhapActionPerformed
         String s=taikhoan.getText();
-        FileWriter fw;
         try {
-            fw = new FileWriter("src\\bai_tap_lon\\luuID.txt");
-            fw.write(s);
-            fw.close();
+            CSDL.WriteIDToFile(s);
         } catch (IOException ex) {
             Logger.getLogger(DangNhap.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         if(CSDL.statement_kiemtrataikhoan(taikhoan.getText())==true && CSDL.statement_kiemtramatkhau(matkhau.getText())==true){
             TrangChuUser tcuse=new TrangChuUser();
             tcuse.setVisible(true);

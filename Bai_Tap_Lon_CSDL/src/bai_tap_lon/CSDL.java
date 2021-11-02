@@ -5,6 +5,10 @@
  */
 package bai_tap_lon;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -164,4 +168,26 @@ public class CSDL {
         }
         return false;
     }
+    
+    // Đọc ID từ file
+    public static String ReadIDFromFile() throws FileNotFoundException, IOException {
+        String s="";
+        FileReader fr;
+        fr = new FileReader("src\\bai_tap_lon\\luuID.txt");
+        int i;
+        while((i=fr.read())!=-1){
+            s+= (char)i;
+        }
+        return s;
+    }
+    
+   // Ghi ID vào File
+    public static void WriteIDToFile(String id) throws IOException {
+        FileWriter fw;
+        fw = new FileWriter("src\\bai_tap_lon\\luuID.txt");
+        fw.write(id);
+        fw.close();
+    }
+    
+    
 }
