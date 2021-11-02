@@ -172,7 +172,7 @@ public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
         String s="";
         FileReader fr;
         try {
-            fr = new FileReader("src\\bai_tap_lon\\tanh.txt");
+            fr = new FileReader("src\\bai_tap_lon\\ID.dat");
             int i;
             while((i=fr.read())!=-1){
                 s+= (char)i;
@@ -221,22 +221,16 @@ public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Nhap_Thong_Tin_Hang_Ngay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Nhap_Thong_Tin_Hang_Ngay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Nhap_Thong_Tin_Hang_Ngay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Nhap_Thong_Tin_Hang_Ngay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Nhap_Thong_Tin_Hang_Ngay().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Nhap_Thong_Tin_Hang_Ngay().setVisible(true);
         });
     }
 

@@ -37,7 +37,6 @@ public class ThongTinUser extends javax.swing.JFrame {
         phoneText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(880, 640));
         setResizable(false);
 
         diaChi.setText("Địa chỉ");
@@ -50,18 +49,29 @@ public class ThongTinUser extends javax.swing.JFrame {
 
         phone.setText("Số điện thoại");
 
-        hoVaTenText.setText("jTextField1");
         hoVaTenText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hoVaTenTextActionPerformed(evt);
             }
         });
 
-        ngaySinhText.setText("jTextField1");
+        ngaySinhText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ngaySinhTextActionPerformed(evt);
+            }
+        });
 
-        diaChiText.setText("jTextField1");
+        diaChiText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                diaChiTextActionPerformed(evt);
+            }
+        });
 
-        phoneText.setText("jTextField1");
+        phoneText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneTextActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,6 +127,18 @@ public class ThongTinUser extends javax.swing.JFrame {
     private void hoVaTenTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hoVaTenTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_hoVaTenTextActionPerformed
+
+    private void ngaySinhTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ngaySinhTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ngaySinhTextActionPerformed
+
+    private void diaChiTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diaChiTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_diaChiTextActionPerformed
+
+    private void phoneTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneTextActionPerformed
 
     /**
      * @param args the command line arguments

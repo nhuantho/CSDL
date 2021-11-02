@@ -5,6 +5,9 @@
  */
 package bai_tap_lon;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -136,7 +139,7 @@ public class CSDL {
     }
      
      
-    // Hiển thị thông tin người dùng
+////     Hiển thị thông tin người dùng
 //     public static void statement_hienthithongtin() {
 //         try{
 //            Statement sta=jdbcConnection().createStatement();
@@ -156,4 +159,31 @@ public class CSDL {
 //            System.out.println(e);
 //        }
 //     }
+
+    static boolean insert_into_nhap_thong_tin_hang_ngay(String s, String time, String text, String text0, String bmi, String TheTrang) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+     
+     
+     // Ghi ra file ID
+     public void writeIDToFile() throws FileNotFoundException, IOException {
+        String s="";
+        FileReader fr;
+        fr = new FileReader("src\\bai_tap_lon\\ID.dat");
+        int i;
+        while((i=fr.read())!=-1){
+            s+= (char)i;
+        }
+     }
+     
+     public String ReadIDFeomFile() throws FileNotFoundException, IOException {
+         String s="";
+        FileReader fr;
+        fr = new FileReader("src\\bai_tap_lon\\ID.dat");
+        int i;
+        while((i=fr.read())!=-1){
+            s+= (char)i;
+        }
+        return s;
+     }
 }
