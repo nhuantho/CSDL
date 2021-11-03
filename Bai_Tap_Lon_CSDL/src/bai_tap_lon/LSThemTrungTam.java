@@ -183,9 +183,9 @@ public class LSThemTrungTam extends javax.swing.JFrame {
         //        System.out.println(x);
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         String s1 = df.format(jDateChooser3.getDate());
-//        System.out.println(s1);
+        System.out.println(s1);
         String s2 = df.format(jDateChooser4.getDate());
-//        System.out.println(s2);
+        System.out.println(s2);
         tableModel = (DefaultTableModel) jTable1.getModel();
         tableModel.setRowCount(0);
         try{
