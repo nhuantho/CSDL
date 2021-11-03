@@ -177,7 +177,6 @@ public class LSThemThongTin extends javax.swing.JFrame {
                     if (uid.equals(id))
                         tableModel.addRow(new Object[] {date, chieucao, cannang, bmi, thettrang});
                 }
-                //                                System.out.println(id+" "+idtt+" "+date);
             }
         }catch(SQLException e){
             System.out.println(e);
