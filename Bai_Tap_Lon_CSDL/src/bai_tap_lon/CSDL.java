@@ -28,7 +28,7 @@ public class CSDL {
     public static Connection jdbcConnection(){
         String url="jdbc:mysql://localhost:3306/quanlisuckhoe";
         String user="root";
-        String password = "Anhdungvk01";
+        String password = "nt01247005688N";
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(url, user, password);
@@ -147,7 +147,7 @@ public class CSDL {
     //nhap thong tin hang ngay vao co so du lieu by tanhdz
     public static boolean insert_into_nhap_thong_tin_hang_ngay(String UserId,String day,String CanNang,String ChieuCao,String BMI,String TheTrang){
         try{
-            if(ChieuCao.equalsIgnoreCase("")==true||CanNang.equalsIgnoreCase("")==true) return false;
+            if(ChieuCao.equalsIgnoreCase("")||CanNang.equalsIgnoreCase("")) return false;
             String insert="insert into nhapthongtinvaloikhuyen values(?,?,?,?,?,?)";
             PreparedStatement ps=jdbcConnection().prepareStatement(insert);
             ps.setString(1, UserId);
@@ -155,8 +155,8 @@ public class CSDL {
             Double chieucao=Double.valueOf(ChieuCao);//format sang by tanhdz
             Double cannang=Double.valueOf(CanNang);
             Double bmi=Double.valueOf(BMI);
-            ps.setDouble(3, cannang);
-            ps.setDouble(4, chieucao);
+            ps.setDouble(3, chieucao);
+            ps.setDouble(4, cannang);
             ps.setDouble(5, bmi);
             ps.setString(6, TheTrang);
             int n=ps.executeUpdate();
