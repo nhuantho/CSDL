@@ -49,6 +49,11 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         loikhuyen.setBackground(new java.awt.Color(255, 102, 0));
         loikhuyen.setForeground(new java.awt.Color(255, 255, 255));
         loikhuyen.setText("Thêm lời khuyên");
+        loikhuyen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loikhuyenActionPerformed(evt);
+            }
+        });
 
         trungtam.setBackground(new java.awt.Color(255, 102, 0));
         trungtam.setForeground(new java.awt.Color(255, 255, 255));
@@ -151,6 +156,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         them.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_trungtamActionPerformed
+
+    private void loikhuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loikhuyenActionPerformed
+        // TODO add your handling code here:
+        Nhap_Loi_Khuyen them=new Nhap_Loi_Khuyen();
+        them.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_loikhuyenActionPerformed
 
     /**
      * @param args the command line arguments
