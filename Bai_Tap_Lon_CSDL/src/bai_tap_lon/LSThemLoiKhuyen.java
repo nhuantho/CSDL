@@ -26,12 +26,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Admin
  */
-public class TableHistory extends javax.swing.JFrame {
+public class LSThemLoiKhuyen extends javax.swing.JFrame {
 
     /**
      * Creates new form TableHistory
      */
-    public TableHistory() {
+    public LSThemLoiKhuyen() {
         initComponents();
     }
 
@@ -227,20 +227,21 @@ public class TableHistory extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TableHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LSThemLoiKhuyen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TableHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LSThemLoiKhuyen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TableHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LSThemLoiKhuyen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TableHistory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LSThemLoiKhuyen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TableHistory().setVisible(true);
+                new LSThemLoiKhuyen().setVisible(true);
             }
         });
     }
