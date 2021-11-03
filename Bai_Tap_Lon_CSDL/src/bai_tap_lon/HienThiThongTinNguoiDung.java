@@ -25,9 +25,24 @@ public class HienThiThongTinNguoiDung extends javax.swing.JFrame {
      */
     public HienThiThongTinNguoiDung() throws IOException {
         initComponents();
-        
+        this.setInfo();
     }
 
+    
+    private void setInfo() throws IOException {
+        this.info = new Vector<>();
+        info.addAll(CSDL.statement_hien_thi_thong_tin_nguoi_dung());
+        this.hoVaTenDisplay.setText(this.info.get(1));
+        this.dobDisplay.setText(this.info.get(2));
+        this.addressDisplay.setText(this.info.get(3));
+        this.phoneDisplay.setText(this.info.get(4));
+        this.chieuCaoDisplay.setText(this.info.get(5) + "   cm");
+        this.canNangDisplay.setText(this.info.get(6) + "   kg");
+        this.bmiDisplay.setText(this.info.get(7));
+        this.theTrangDisplay.setText(this.info.get(8));
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -184,77 +199,7 @@ public class HienThiThongTinNguoiDung extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_editActionPerformed
 
-    public JLabel getAddressDisplay() {
-        return addressDisplay;
-    }
-
-    public void setAddressDisplay(JLabel addressDisplay) {
-        this.addressDisplay = addressDisplay;
-    }
-
-    public JLabel getBmiDisplay() {
-        return bmiDisplay;
-    }
-
-    public void setBmiDisplay(JLabel bmiDisplay) {
-        this.bmiDisplay = bmiDisplay;
-    }
-
-    public JLabel getCanNangDisplay() {
-        return canNangDisplay;
-    }
-
-    public void setCanNangDisplay(JLabel canNangDisplay) {
-        this.canNangDisplay = canNangDisplay;
-    }
-
-    public JLabel getChieuCaoDisplay() {
-        return chieuCaoDisplay;
-    }
-
-    public void setChieuCaoDisplay(JLabel chieuCaoDisplay) {
-        this.chieuCaoDisplay = chieuCaoDisplay;
-    }
-
-    public JLabel getDobDisplay() {
-        return dobDisplay;
-    }
-
-    public void setDobDisplay(JLabel dobDisplay) {
-        this.dobDisplay = dobDisplay;
-    }
-
-    public JLabel getHoVaTenDisplay() {
-        return hoVaTenDisplay;
-    }
-
-    public void setHoVaTenDisplay(String ten) {
-        this.hoVaTenDisplay.setText(ten);
-    }
-
-    public JLabel getPhoneDisplay() {
-        return phoneDisplay;
-    }
-
-    public void setPhoneDisplay(JLabel phoneDisplay) {
-        this.phoneDisplay = phoneDisplay;
-    }
-
-    public JLabel getTheTrangDisplay() {
-        return theTrangDisplay;
-    }
-
-    public void setTheTrangDisplay(JLabel theTrangDisplay) {
-        this.theTrangDisplay = theTrangDisplay;
-    }
-
     
-    
-    // thông tin người dùng
-    public void write() throws IOException {
-        this.info = CSDL.statement_hien_thi_thong_tin_nguoi_dung();
-        this.setHoVaTenDisplay(this.info.get(0));
-    }
     /**
      * @param args the command line arguments
      */

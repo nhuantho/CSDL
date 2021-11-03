@@ -156,11 +156,16 @@ public class TrangChuUser extends javax.swing.JFrame {
     }//GEN-LAST:event_thoatActionPerformed
 
     private void ttnguoidungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttnguoidungActionPerformed
+
+        try {
+            CSDL.statement_hien_thi_thong_tin_nguoi_dung();
+        } catch (IOException ex) {
+            Logger.getLogger(TrangChuUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             // TODO add your handling code here:
             
             HienThiThongTinNguoiDung infoUser = new HienThiThongTinNguoiDung();
-            infoUser.write();
             infoUser.setVisible(true);
             this.dispose();
         } catch (IOException ex) {

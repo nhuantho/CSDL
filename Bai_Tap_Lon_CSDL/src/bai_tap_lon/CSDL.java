@@ -198,17 +198,17 @@ public class CSDL {
        Vector<String> res = new Vector<>();
        try{
             Statement sta=jdbcConnection().createStatement();
-            String select="SELECT user.*,\n" +
+            String id = ReadIDFromFile();
+            String select= "SELECT user.*,\n" +
                             "nhapthongtinvaloikhuyen.ChieuCao, nhapthongtinvaloikhuyen.CanNang, nhapthongtinvaloikhuyen.BMI, nhapthongtinvaloikhuyen.TheTrang, nhapthongtinvaloikhuyen.Day\n" +
                             "FROM user, nhapthongtinvaloikhuyen \n" +
-                            "WHERE user.UserID = '?'\n" +
+                            "WHERE user.UserID = " + "\'" + id + "\'" +  "\n" +
                             "AND nhapthongtinvaloikhuyen.Day = (SELECT MAX(nhapthongtinvaloikhuyen.Day) FROM nhapthongtinvaloikhuyen);";
-            PreparedStatement ps=jdbcConnection().prepareStatement(select);
-            String id = ReadIDFromFile();
-            System.out.println(id);
-            ps.setString(1, id);
+            
+//            System.out.println(id);
+//            ps.setString(1, id);
             ResultSet re=sta.executeQuery(select);
-            while (re.next()) {                
+            while(re.next()) {
                 String userid=re.getString("UserID");
                 String hodem=re.getString("HoDem");
                 String ten=re.getString("Ten");
@@ -220,9 +220,8 @@ public class CSDL {
                 String canNang = re.getString("CanNang");
                 String bmi = re.getString("BMI");
                 String theTrang = re.getString("TheTrang");
-                
-                System.out.println(userid+" "+hodem+" "+ten+" "+date+" "+diachi+" "+sdt + " " + chieuCao  + " " + canNang + " " + bmi + " " + theTrang);
-                
+
+//                System.out.println(userid+" "+hoten+" "+date+" "+diachi+" "+sdt + " " + chieuCao  + " " + canNang + " " + bmi + " " + theTrang);
                 res.add(userid);
                 res.add(hoten);
                 res.add(date);
@@ -233,6 +232,9 @@ public class CSDL {
                 res.add(bmi);
                 res.add(theTrang);
             }
+                
+
+            
         }catch(SQLException e){
             System.out.println(e);
         }
