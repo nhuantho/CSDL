@@ -189,8 +189,8 @@ public class Nhap_Thong_Tin_Hang_Ngay extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Nhap_Thong_Tin_Hang_Ngay.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(s);
-        if(CSDL.insert_into_nhap_thong_tin_hang_ngay(s, getTime(), nhap_can_nang.getText(), nhap_chieu_cao.getText(), getBMI(), TheTrang())==true){
+//        System.out.println(s);
+        if(CSDL.insert_into_nhap_thong_tin_hang_ngay(s, getTime(), nhap_can_nang.getText(), nhap_chieu_cao.getText(), getBMI(), TheTrang())){
             TrangChuUser trangchu=new TrangChuUser();
             trangchu.setVisible(true);
             this.dispose();
