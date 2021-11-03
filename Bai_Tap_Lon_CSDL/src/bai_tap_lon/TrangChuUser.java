@@ -5,6 +5,10 @@
  */
 package bai_tap_lon;
 
+import java.io.IOException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -152,8 +156,16 @@ public class TrangChuUser extends javax.swing.JFrame {
     }//GEN-LAST:event_thoatActionPerformed
 
     private void ttnguoidungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttnguoidungActionPerformed
-        // TODO add your handling code here:
-         
+        try {
+            // TODO add your handling code here:
+            
+            HienThiThongTinNguoiDung infoUser = new HienThiThongTinNguoiDung();
+            infoUser.write();
+            infoUser.setVisible(true);
+            this.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(TrangChuUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ttnguoidungActionPerformed
 
     private void goiybaitapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goiybaitapActionPerformed

@@ -205,6 +205,7 @@ public class CSDL {
                             "AND nhapthongtinvaloikhuyen.Day = (SELECT MAX(nhapthongtinvaloikhuyen.Day) FROM nhapthongtinvaloikhuyen);";
             PreparedStatement ps=jdbcConnection().prepareStatement(select);
             String id = ReadIDFromFile();
+            System.out.println(id);
             ps.setString(1, id);
             ResultSet re=sta.executeQuery(select);
             while (re.next()) {                

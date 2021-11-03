@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 
 /**
  *
@@ -20,11 +21,11 @@ public class HienThiThongTinNguoiDung extends javax.swing.JFrame {
     
     /**
      * Creates new form HienThiThongTinNguoiDung
+     * @throws java.io.IOException
      */
     public HienThiThongTinNguoiDung() throws IOException {
         initComponents();
-        this.info = new Vector<>(CSDL.statement_hien_thi_thong_tin_nguoi_dung());
-        hoVaTenDisplay.setText(info.get(1));
+        
     }
 
     /**
@@ -56,7 +57,6 @@ public class HienThiThongTinNguoiDung extends javax.swing.JFrame {
         theTrangDisplay = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(880, 640));
 
         hoVaTen.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         hoVaTen.setText("Họ Và Tên");
@@ -141,9 +141,9 @@ public class HienThiThongTinNguoiDung extends javax.swing.JFrame {
                         .addGap(54, 54, 54)
                         .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hoVaTen, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hoVaTenDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(hoVaTenDisplay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hoVaTen, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ngaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,10 +179,82 @@ public class HienThiThongTinNguoiDung extends javax.swing.JFrame {
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
         // TODO add your handling code here:
+        ChinhSuaThongTinNguoiDung edit = new ChinhSuaThongTinNguoiDung();
+        edit.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_editActionPerformed
 
-    // thông tin người dùng
+    public JLabel getAddressDisplay() {
+        return addressDisplay;
+    }
 
+    public void setAddressDisplay(JLabel addressDisplay) {
+        this.addressDisplay = addressDisplay;
+    }
+
+    public JLabel getBmiDisplay() {
+        return bmiDisplay;
+    }
+
+    public void setBmiDisplay(JLabel bmiDisplay) {
+        this.bmiDisplay = bmiDisplay;
+    }
+
+    public JLabel getCanNangDisplay() {
+        return canNangDisplay;
+    }
+
+    public void setCanNangDisplay(JLabel canNangDisplay) {
+        this.canNangDisplay = canNangDisplay;
+    }
+
+    public JLabel getChieuCaoDisplay() {
+        return chieuCaoDisplay;
+    }
+
+    public void setChieuCaoDisplay(JLabel chieuCaoDisplay) {
+        this.chieuCaoDisplay = chieuCaoDisplay;
+    }
+
+    public JLabel getDobDisplay() {
+        return dobDisplay;
+    }
+
+    public void setDobDisplay(JLabel dobDisplay) {
+        this.dobDisplay = dobDisplay;
+    }
+
+    public JLabel getHoVaTenDisplay() {
+        return hoVaTenDisplay;
+    }
+
+    public void setHoVaTenDisplay(String ten) {
+        this.hoVaTenDisplay.setText(ten);
+    }
+
+    public JLabel getPhoneDisplay() {
+        return phoneDisplay;
+    }
+
+    public void setPhoneDisplay(JLabel phoneDisplay) {
+        this.phoneDisplay = phoneDisplay;
+    }
+
+    public JLabel getTheTrangDisplay() {
+        return theTrangDisplay;
+    }
+
+    public void setTheTrangDisplay(JLabel theTrangDisplay) {
+        this.theTrangDisplay = theTrangDisplay;
+    }
+
+    
+    
+    // thông tin người dùng
+    public void write() throws IOException {
+        this.info = CSDL.statement_hien_thi_thong_tin_nguoi_dung();
+        this.setHoVaTenDisplay(this.info.get(0));
+    }
     /**
      * @param args the command line arguments
      */
