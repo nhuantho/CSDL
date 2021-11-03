@@ -30,21 +30,19 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="canNang" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="chieuCao" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="ten" alignment="0" max="32767" attributes="0"/>
                                   <Component id="sdt" alignment="0" max="32767" attributes="0"/>
                                   <Component id="diaChi" alignment="0" max="32767" attributes="0"/>
                                   <Component id="ngaySinh" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="hoVaTen" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
+                                  <Component id="hoDem" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="hoVaTenEdit" max="32767" attributes="0"/>
+                                  <Component id="hoDemEdit" pref="625" max="32767" attributes="0"/>
                                   <Component id="dobEdit" max="32767" attributes="0"/>
                                   <Component id="addressEdit" alignment="0" max="32767" attributes="0"/>
                                   <Component id="phoneEdit" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="chieuCaoEdit" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="canNangEdit" alignment="0" pref="625" max="32767" attributes="0"/>
+                                  <Component id="tenEdit" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="header" alignment="1" min="-2" pref="766" max="-2" attributes="0"/>
@@ -64,10 +62,15 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Component id="header" min="-2" pref="68" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="hoVaTen" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="hoVaTenEdit" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="hoDem" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="hoDemEdit" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="ten" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="tenEdit" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -84,40 +87,24 @@
                   <Component id="sdt" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="phoneEdit" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="chieuCao" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="chieuCaoEdit" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="canNang" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="canNangEdit" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace pref="65" max="32767" attributes="0"/>
               <Component id="save" min="-2" pref="41" max="-2" attributes="0"/>
-              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="chieuCao">
+    <Component class="javax.swing.JLabel" name="ten">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Chi&#x1ec1;u Cao"/>
+        <Property name="text" type="java.lang.String" value="T&#xea;n"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="canNang">
+    <Component class="javax.swing.JLabel" name="hoDem">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="C&#xe2;n N&#x1eb7;ng"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="hoVaTen">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="H&#x1ecd; V&#xe0; T&#xea;n"/>
+        <Property name="text" type="java.lang.String" value="H&#x1ecd; &#x110;&#x1ec7;m"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="header">
@@ -148,9 +135,9 @@
         <Property name="text" type="java.lang.String" value="S&#x1ed1; &#x110;i&#x1ec7;n Tho&#x1ea1;i"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="hoVaTenEdit">
+    <Component class="javax.swing.JTextField" name="hoDemEdit">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hoVaTenEditActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hoDemEditActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="dobEdit">
@@ -159,9 +146,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="phoneEdit">
     </Component>
-    <Component class="javax.swing.JTextField" name="chieuCaoEdit">
-    </Component>
-    <Component class="javax.swing.JTextField" name="canNangEdit">
+    <Component class="javax.swing.JTextField" name="tenEdit">
     </Component>
     <Component class="javax.swing.JButton" name="save">
       <Properties>

@@ -27,31 +27,26 @@ public class ChinhSuaThongTinNguoiDung extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        chieuCao = new javax.swing.JLabel();
-        canNang = new javax.swing.JLabel();
-        hoVaTen = new javax.swing.JLabel();
+        ten = new javax.swing.JLabel();
+        hoDem = new javax.swing.JLabel();
         header = new javax.swing.JLabel();
         ngaySinh = new javax.swing.JLabel();
         diaChi = new javax.swing.JLabel();
         sdt = new javax.swing.JLabel();
-        hoVaTenEdit = new javax.swing.JTextField();
+        hoDemEdit = new javax.swing.JTextField();
         dobEdit = new javax.swing.JTextField();
         addressEdit = new javax.swing.JTextField();
         phoneEdit = new javax.swing.JTextField();
-        chieuCaoEdit = new javax.swing.JTextField();
-        canNangEdit = new javax.swing.JTextField();
+        tenEdit = new javax.swing.JTextField();
         save = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        chieuCao.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chieuCao.setText("Chiều Cao");
+        ten.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ten.setText("Tên");
 
-        canNang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        canNang.setText("Cân Nặng");
-
-        hoVaTen.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        hoVaTen.setText("Họ Và Tên");
+        hoDem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        hoDem.setText("Họ Đệm");
 
         header.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -67,9 +62,9 @@ public class ChinhSuaThongTinNguoiDung extends javax.swing.JFrame {
         sdt.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         sdt.setText("Số Điện Thoại");
 
-        hoVaTenEdit.addActionListener(new java.awt.event.ActionListener() {
+        hoDemEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hoVaTenEditActionPerformed(evt);
+                hoDemEditActionPerformed(evt);
             }
         });
 
@@ -92,20 +87,18 @@ public class ChinhSuaThongTinNguoiDung extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(canNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(chieuCao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ten, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(sdt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(diaChi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(ngaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(hoVaTen, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(hoDem, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(hoVaTenEdit)
+                                    .addComponent(hoDemEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
                                     .addComponent(dobEdit)
                                     .addComponent(addressEdit)
                                     .addComponent(phoneEdit)
-                                    .addComponent(chieuCaoEdit)
-                                    .addComponent(canNangEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)))
+                                    .addComponent(tenEdit)))
                             .addComponent(header, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(57, 57, 57))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -117,10 +110,14 @@ public class ChinhSuaThongTinNguoiDung extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hoVaTen, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hoVaTenEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(hoDem, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hoDemEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ten, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tenEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ngaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,25 +130,17 @@ public class ChinhSuaThongTinNguoiDung extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phoneEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chieuCao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chieuCaoEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(canNang, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(canNangEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(50, 50, 50))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void hoVaTenEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hoVaTenEditActionPerformed
+    private void hoDemEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hoDemEditActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_hoVaTenEditActionPerformed
+    }//GEN-LAST:event_hoDemEditActionPerformed
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
@@ -195,18 +184,16 @@ public class ChinhSuaThongTinNguoiDung extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressEdit;
-    private javax.swing.JLabel canNang;
-    private javax.swing.JTextField canNangEdit;
-    private javax.swing.JLabel chieuCao;
-    private javax.swing.JTextField chieuCaoEdit;
     private javax.swing.JLabel diaChi;
     private javax.swing.JTextField dobEdit;
     private javax.swing.JLabel header;
-    private javax.swing.JLabel hoVaTen;
-    private javax.swing.JTextField hoVaTenEdit;
+    private javax.swing.JLabel hoDem;
+    private javax.swing.JTextField hoDemEdit;
     private javax.swing.JLabel ngaySinh;
     private javax.swing.JTextField phoneEdit;
     private javax.swing.JButton save;
     private javax.swing.JLabel sdt;
+    private javax.swing.JLabel ten;
+    private javax.swing.JTextField tenEdit;
     // End of variables declaration//GEN-END:variables
 }

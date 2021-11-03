@@ -204,9 +204,6 @@ public class CSDL {
                             "FROM user, nhapthongtinvaloikhuyen \n" +
                             "WHERE user.UserID = " + "\'" + id + "\'" +  "\n" +
                             "AND nhapthongtinvaloikhuyen.Day = (SELECT MAX(nhapthongtinvaloikhuyen.Day) FROM nhapthongtinvaloikhuyen);";
-            
-//            System.out.println(id);
-//            ps.setString(1, id);
             ResultSet re=sta.executeQuery(select);
             while(re.next()) {
                 String userid=re.getString("UserID");
@@ -240,4 +237,10 @@ public class CSDL {
         }
        return res;
    }
+    
+    // Sửa thông tin người dùng
+    public void statement_sua_thong_tin_nguoi_dung() {
+        
+    }
+    
 }

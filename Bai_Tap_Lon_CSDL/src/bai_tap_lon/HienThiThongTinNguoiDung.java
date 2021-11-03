@@ -72,6 +72,8 @@ public class HienThiThongTinNguoiDung extends javax.swing.JFrame {
         theTrangDisplay = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(880, 600));
+        setMinimumSize(new java.awt.Dimension(880, 600));
 
         hoVaTen.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         hoVaTen.setText("Họ Và Tên");
@@ -186,7 +188,7 @@ public class HienThiThongTinNguoiDung extends javax.swing.JFrame {
                         .addComponent(bmiDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(theTrang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(theTrangDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
