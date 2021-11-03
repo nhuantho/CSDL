@@ -5,6 +5,10 @@
  */
 package bai_tap_lon;
 
+import static bai_tap_lon.DangNhap.taikhoan;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -114,6 +118,12 @@ public class DangNhapAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_dangkiActionPerformed
     //ấn vào đăng nhập để vào trang chủ admin
     private void dangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dangnhapActionPerformed
+        String s=taikhoan.getText();
+        try {
+            CSDL.WriteIDToFile(s);
+        } catch (IOException ex) {
+            Logger.getLogger(DangNhapAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if(CSDL.statement_kiemtrataikhoan(taikhoan.getText())==true && CSDL.statement_kiemtramatkhau(matkhau.getText())==true){
             TrangChuAdmin tcadmin=new TrangChuAdmin();
             tcadmin.setVisible(true);

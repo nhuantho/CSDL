@@ -5,6 +5,10 @@
  */
 package bai_tap_lon;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,7 +28,7 @@ public class CSDL {
     public static Connection jdbcConnection(){
         String url="jdbc:mysql://localhost:3306/quanlisuckhoe";
         String user="root";
-        String password = "Anhdungvk01";
+        String password = "01062001";
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(url, user, password);
@@ -164,10 +168,105 @@ public class CSDL {
         }
         return false;
     }
-    public void setUserID(String UserID){
-        this.UserID=DangNhap.taikhoan.getText();
+    
+    // Đọc ID từ file
+    public static String ReadIDFromFile() throws FileNotFoundException, IOException {
+        String s="";
+        FileReader fr;
+        fr = new FileReader("src\\bai_tap_lon\\luuID.txt");
+        int i;
+        while((i=fr.read())!=-1){
+            s+= (char)i;
+        }
+        return s;
     }
-    public String getUserID(){
-        return this.UserID;
+    
+   // Ghi ID vào File
+    public static void WriteIDToFile(String id) throws IOException {
+        FileWriter fw;
+        fw = new FileWriter("src\\bai_tap_lon\\luuID.txt");
+        fw.write(id);
+        fw.close();
+    }
+    
+    
+    // cập nhật trung tâm
+    public static boolean insert_into_trungtam(String IDtrungtam,String TenTrungTam,String Tinh,String DiaChiCuThe,String sdt){
+        try{
+            if(IDtrungtam.equalsIgnoreCase("")||TenTrungTam.equalsIgnoreCase("")||Tinh.equalsIgnoreCase("")||DiaChiCuThe.equalsIgnoreCase("")||sdt.equalsIgnoreCase(""))
+                    return false;
+            String insert="insert into trungtam values(?,?,?,?,?)";
+            PreparedStatement ps=jdbcConnection().prepareStatement(insert);
+            ps.setString(1, IDtrungtam);
+            ps.setString(2, TenTrungTam);
+            ps.setString(3, Tinh);
+            ps.setString(4, DiaChiCuThe);
+            ps.setString(5, sdt);
+            int n=ps.executeUpdate();
+            if(n!=0)return true;
+            return false;
+        }
+        catch(SQLException e){
+            Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+    
+    //cap nhat them admin nào nhập trung tâm nào
+    public static boolean insert_into_capnhattrungtam(String IDadmin,String IDTrungTam,String date){
+        try{
+            String insert="insert into capnhattrungtam values(?,?,?)";
+            PreparedStatement ps=jdbcConnection().prepareStatement(insert);
+            ps.setString(1, IDadmin);
+            ps.setString(2, IDTrungTam);
+            ps.setString(3, date);
+            int n=ps.executeUpdate();
+            if(n!=0)return true;
+            return false;
+        }
+        catch(SQLException e){
+            Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+    
+    //update loi khuyen
+    public static boolean update_loi_khuyen(String TheTrang,String TapLuyen,String DinhDuong){
+        try{
+            if(TapLuyen.equalsIgnoreCase("")||DinhDuong.equalsIgnoreCase(""))
+                    return false;
+            String update="UPDATE loikhuyen "
+                    + "SET TapLuyen=?"
+                    + ", DinhDuong=?"
+                    + "WHERE TheTrang=?";
+            PreparedStatement ps=jdbcConnection().prepareStatement(update);
+            ps.setString(1, TapLuyen);
+            ps.setString(2, DinhDuong);
+            ps.setString(3, TheTrang);
+            int n=ps.executeUpdate();
+            if(n!=0)return true;
+            return false;
+        }
+        catch(SQLException e){
+            Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+    
+    public static boolean insert_into_cap_nhat_loi_khuyen(String IDadmin,String thetrang,String date){
+        try{
+            String insert="insert into capnhatloikhuyen values(?,?,?)";
+            PreparedStatement ps=jdbcConnection().prepareStatement(insert);
+            ps.setString(1, IDadmin);
+            ps.setString(2, thetrang);
+            ps.setString(3, date);
+            int n=ps.executeUpdate();
+            if(n!=0)return true;
+            return false;
+        }
+        catch(SQLException e){
+            Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
     }
 }

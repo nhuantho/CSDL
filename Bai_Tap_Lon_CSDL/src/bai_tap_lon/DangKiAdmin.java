@@ -40,9 +40,9 @@ public class DangKiAdmin extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        dangnhap = new javax.swing.JButton();
         matkhau = new javax.swing.JPasswordField();
         nhaplaipass = new javax.swing.JPasswordField();
-        dangnhap = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng kí tài khoản quản trị viên");
@@ -111,7 +111,7 @@ public class DangKiAdmin extends javax.swing.JFrame {
                             .addComponent(email)
                             .addComponent(id)
                             .addComponent(matkhau)
-                            .addComponent(nhaplaipass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)))
+                            .addComponent(nhaplaipass, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(dangki, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
