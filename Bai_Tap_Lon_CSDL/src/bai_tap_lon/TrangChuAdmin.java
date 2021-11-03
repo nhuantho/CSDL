@@ -141,12 +141,14 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_thoatActionPerformed
 
     private void lstungtamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lstungtamActionPerformed
-        // TODO add your handling code here:
+        LSThemTrungTam lsttt = new LSThemTrungTam();
+        lsttt.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_lstungtamActionPerformed
 
     private void lsloikhuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lsloikhuyenActionPerformed
-        TableHistory T = new TableHistory();
-        T.setVisible(true);
+        LSThemLoiKhuyen lstlk = new LSThemLoiKhuyen();
+        lstlk.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lsloikhuyenActionPerformed
 
