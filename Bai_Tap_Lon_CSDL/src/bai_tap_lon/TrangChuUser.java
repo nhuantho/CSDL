@@ -160,7 +160,9 @@ public class TrangChuUser extends javax.swing.JFrame {
     }//GEN-LAST:event_goiybaitapActionPerformed
 
     private void lichsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lichsuActionPerformed
-        // TODO add your handling code here:
+        LSThemThongTin T = new LSThemThongTin();
+        T.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_lichsuActionPerformed
 
     private void nhapttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nhapttActionPerformed
