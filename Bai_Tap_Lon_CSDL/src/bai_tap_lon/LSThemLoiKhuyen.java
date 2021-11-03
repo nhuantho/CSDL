@@ -175,9 +175,6 @@ public class LSThemLoiKhuyen extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         DefaultTableModel tableModel;
         JButton btn = new JButton("Find");
-//        String x = "01-11-2021 21:46:51";
-//        x = x.substring(0, 10);
-//        System.out.println(x);
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         String s1 = df.format(jDateChooser3.getDate());
 //        System.out.println(s1);
