@@ -202,14 +202,13 @@ public class CSDL {
             String select= "SELECT user.*,\n" +
                             "nhapthongtinvaloikhuyen.ChieuCao, nhapthongtinvaloikhuyen.CanNang, nhapthongtinvaloikhuyen.BMI, nhapthongtinvaloikhuyen.TheTrang, nhapthongtinvaloikhuyen.Day\n" +
                             "FROM user, nhapthongtinvaloikhuyen \n" +
-                            "WHERE user.UserID = " + "\'" + id + "\'" +  "\n" +
+                            "WHERE user.UserID = " + "\'" + id + "\'" + "\n" +
                             "AND nhapthongtinvaloikhuyen.Day = (SELECT MAX(nhapthongtinvaloikhuyen.Day) FROM nhapthongtinvaloikhuyen);";
             ResultSet re=sta.executeQuery(select);
             while(re.next()) {
                 String userid=re.getString("UserID");
                 String hodem=re.getString("HoDem");
                 String ten=re.getString("Ten");
-                String hoten = "" + hodem + " " + ten;
                 String date=re.getString("NgaySinh");
                 String diachi=re.getString("DiaChi");
                 String sdt=re.getString("SDT");
@@ -220,7 +219,8 @@ public class CSDL {
 
 //                System.out.println(userid+" "+hoten+" "+date+" "+diachi+" "+sdt + " " + chieuCao  + " " + canNang + " " + bmi + " " + theTrang);
                 res.add(userid);
-                res.add(hoten);
+                res.add(hodem);
+                res.add(ten);
                 res.add(date);
                 res.add(diachi);
                 res.add(sdt);
@@ -239,7 +239,26 @@ public class CSDL {
    }
     
     // Sửa thông tin người dùng
-    public void statement_sua_thong_tin_nguoi_dung() {
+    public static void statement_sua_thong_tin_nguoi_dung(String hodem, String ten, String dob, String address, String phone) throws IOException {
+        try{
+            Statement sta=jdbcConnection().createStatement();
+            String id = ReadIDFromFile();
+            String update = "UPDATE user\n" +
+                            "SET HoDem = " + "\'" + hodem + "\',\n" +
+                                "Ten = " + "\'" + ten + "\',\n" +
+                                "NgaySinh = " + "\'" + dob + "\',\n" +
+                                "DiaChi = " + "\'" + address + "\',\n"  +
+                                "SDT = " + "\'" + phone + "\'\n"  +
+                            "WHERE UserID = " + "\'" + id + "\';" ;
+            sta.executeUpdate(update);
+            
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+    }
+    
+    
+    public static void statement_luyen_tap_dinh_duong() {
         
     }
     

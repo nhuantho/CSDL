@@ -5,19 +5,43 @@
  */
 package bai_tap_lon;
 
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author tungb
  */
 public class ChinhSuaThongTinNguoiDung extends javax.swing.JFrame {
 
+    private Vector<String> info;
+    
     /**
      * Creates new form ChinhSuaThongTinNguoiDung
      */
-    public ChinhSuaThongTinNguoiDung() {
+    public ChinhSuaThongTinNguoiDung() throws IOException, ParseException {
         initComponents();
+        setInfo();
     }
 
+    
+    private void setInfo() throws IOException, ParseException {
+        this.info = new Vector<>();
+        info.addAll(CSDL.statement_hien_thi_thong_tin_nguoi_dung());
+        this.hoDemEdit.setText(this.info.get(1));
+        this.tenEdit.setText(this.info.get(2));
+        Date date = new SimpleDateFormat("dd/MM/yyyy").parse(this.info.get(3));
+        this.dobEdit.setDate(date);
+        this.addressEdit.setText(this.info.get(4));
+        this.phoneEdit.setText(this.info.get(5));
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,11 +58,12 @@ public class ChinhSuaThongTinNguoiDung extends javax.swing.JFrame {
         diaChi = new javax.swing.JLabel();
         sdt = new javax.swing.JLabel();
         hoDemEdit = new javax.swing.JTextField();
-        dobEdit = new javax.swing.JTextField();
         addressEdit = new javax.swing.JTextField();
         phoneEdit = new javax.swing.JTextField();
         tenEdit = new javax.swing.JTextField();
         save = new javax.swing.JButton();
+        dobEdit = new com.toedter.calendar.JDateChooser();
+        back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,40 +101,58 @@ public class ChinhSuaThongTinNguoiDung extends javax.swing.JFrame {
             }
         });
 
+        dobEdit.setDateFormatString("dd/MM/yyyy");
+
+        back.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        back.setText("Back");
+        back.setMaximumSize(new java.awt.Dimension(72, 33));
+        back.setMinimumSize(new java.awt.Dimension(72, 33));
+        back.setPreferredSize(new java.awt.Dimension(72, 33));
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(86, 86, 86))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(ten, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(sdt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(diaChi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(ngaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(hoDem, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addGap(58, 58, 58)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(hoDemEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
-                                    .addComponent(dobEdit)
                                     .addComponent(addressEdit)
                                     .addComponent(phoneEdit)
-                                    .addComponent(tenEdit)))
-                            .addComponent(header, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(57, 57, 57))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83))))
+                                    .addComponent(tenEdit)
+                                    .addComponent(dobEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+                                    .addComponent(hoDemEdit))))
+                        .addGap(57, 57, 57))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(hoDem, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -119,9 +162,9 @@ public class ChinhSuaThongTinNguoiDung extends javax.swing.JFrame {
                     .addComponent(ten, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tenEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ngaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dobEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ngaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(dobEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(diaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -143,9 +186,35 @@ public class ChinhSuaThongTinNguoiDung extends javax.swing.JFrame {
     }//GEN-LAST:event_hoDemEditActionPerformed
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            String hodem = this.hoDemEdit.getText();
+            String ten = this.tenEdit.getText();
+            Date dob = this.dobEdit.getDate();
+            String pattern = "dd/MM/yyyy";
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+            String date = simpleDateFormat.format(dob);
+            String address = this.addressEdit.getText();
+            String phone = this.phoneEdit.getText();
+//            System.out.println(hodem+" "+ten+" "+dob+" "+address+" "+phone );
+            CSDL.statement_sua_thong_tin_nguoi_dung(hodem, ten, date, address, phone);
+        } catch (IOException ex) {
+            Logger.getLogger(ChinhSuaThongTinNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_saveActionPerformed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        try {
+            // TODO add your handling code here:
+            HienThiThongTinNguoiDung te = new HienThiThongTinNguoiDung();
+            te.setVisible(true);
+            this.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(ChinhSuaThongTinNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_backActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,15 +246,22 @@ public class ChinhSuaThongTinNguoiDung extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ChinhSuaThongTinNguoiDung().setVisible(true);
+                try {
+                    new ChinhSuaThongTinNguoiDung().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(ChinhSuaThongTinNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(ChinhSuaThongTinNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
+                } 
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressEdit;
+    private javax.swing.JButton back;
     private javax.swing.JLabel diaChi;
-    private javax.swing.JTextField dobEdit;
+    private com.toedter.calendar.JDateChooser dobEdit;
     private javax.swing.JLabel header;
     private javax.swing.JLabel hoDem;
     private javax.swing.JTextField hoDemEdit;
