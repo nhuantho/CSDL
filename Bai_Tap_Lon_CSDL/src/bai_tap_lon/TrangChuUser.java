@@ -6,6 +6,7 @@
 package bai_tap_lon;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -174,7 +175,17 @@ public class TrangChuUser extends javax.swing.JFrame {
     }//GEN-LAST:event_ttnguoidungActionPerformed
 
     private void goiybaitapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goiybaitapActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            GoiYCheDoLuyenTap ltdd = new GoiYCheDoLuyenTap();
+            ltdd.setVisible(true);
+            this.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChuUser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(TrangChuUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_goiybaitapActionPerformed
 
     private void lichsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lichsuActionPerformed

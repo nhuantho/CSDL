@@ -258,8 +258,32 @@ public class CSDL {
     }
     
     
-    public static void statement_luyen_tap_dinh_duong() {
-        
+    public static Vector<String> statement_luyen_tap_dinh_duong() throws SQLException, IOException {
+        Vector<String> res = new Vector<>();
+        Statement sta=jdbcConnection().createStatement();
+        String id = ReadIDFromFile();
+        String tt = null;
+        String select= "SELECT user.*,\n" +
+                        "nhapthongtinvaloikhuyen.ChieuCao, nhapthongtinvaloikhuyen.CanNang, nhapthongtinvaloikhuyen.BMI, nhapthongtinvaloikhuyen.TheTrang, nhapthongtinvaloikhuyen.Day\n" +
+                        "FROM user, nhapthongtinvaloikhuyen \n" +
+                        "WHERE user.UserID = " + "\'" + id + "\'" + "\n" +
+                        "AND nhapthongtinvaloikhuyen.Day = (SELECT MAX(nhapthongtinvaloikhuyen.Day) FROM nhapthongtinvaloikhuyen);";
+        ResultSet re=sta.executeQuery(select);
+        while(re.next()) {
+            tt = re.getString("TheTrang");
+        }
+        Statement state=jdbcConnection().createStatement();
+        String selectTheTrang = "SELECT * From loikhuyen WHERE TheTrang = " + "\'" + tt + "\';";
+        re = state.executeQuery(selectTheTrang);
+        while(re.next()) {
+            tt = re.getString("TheTrang");
+            String tapLuyen = re.getString("TapLuyen");
+            String dinhDuong = re.getString("DinhDuong");
+            res.add(tt);
+            res.add(tapLuyen);
+            res.add(dinhDuong);
+        }
+        return res;
     }
     
 }

@@ -5,19 +5,43 @@
  */
 package bai_tap_lon;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author tungb
  */
 public class GoiYCheDoLuyenTap extends javax.swing.JFrame {
 
+    private Vector<String> prac;
+    
     /**
      * Creates new form GoiYCheDoLuyenTap
      */
-    public GoiYCheDoLuyenTap() {
+    public GoiYCheDoLuyenTap() throws SQLException, IOException {
         initComponents();
+        this.write();
     }
 
+    
+    public void write() throws SQLException, IOException {
+        this.prac = new Vector<>();
+        this.prac.addAll(CSDL.statement_luyen_tap_dinh_duong());
+        this.theTrangDisplay.setText(this.prac.get(0));
+        this.luyenTapDisplay.setText(this.prac.get(1));
+        this.luyenTapDisplay.setWrapStyleWord(true);
+        this.luyenTapDisplay.setLineWrap(true);
+        this.luyenTapDisplay.setEditable(false);
+        this.dinhDuongDisplay.setText(this.prac.get(2));
+        this.dinhDuongDisplay.setWrapStyleWord(true);
+        this.dinhDuongDisplay.setLineWrap(true);
+        this.dinhDuongDisplay.setEditable(false);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,11 +54,13 @@ public class GoiYCheDoLuyenTap extends javax.swing.JFrame {
         headerLuyenTap = new javax.swing.JLabel();
         header = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        luyenTapDisplay = new javax.swing.JLabel();
-        dinhDuongDisplay = new javax.swing.JLabel();
         theTrang = new javax.swing.JLabel();
         theTrangDisplay = new javax.swing.JLabel();
         back = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        luyenTapDisplay = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        dinhDuongDisplay = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +89,14 @@ public class GoiYCheDoLuyenTap extends javax.swing.JFrame {
             }
         });
 
+        luyenTapDisplay.setColumns(20);
+        luyenTapDisplay.setRows(5);
+        jScrollPane1.setViewportView(luyenTapDisplay);
+
+        dinhDuongDisplay.setColumns(20);
+        dinhDuongDisplay.setRows(5);
+        jScrollPane2.setViewportView(dinhDuongDisplay);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,15 +110,12 @@ public class GoiYCheDoLuyenTap extends javax.swing.JFrame {
                         .addComponent(theTrang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(luyenTapDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(dinhDuongDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(theTrangDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(8, 8, 8)))
-                    .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(theTrangDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,15 +128,21 @@ public class GoiYCheDoLuyenTap extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(theTrang, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                     .addComponent(theTrangDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(headerLuyenTap, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(luyenTapDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(headerLuyenTap, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dinhDuongDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(43, 43, 43))
         );
 
         pack();
@@ -148,18 +185,26 @@ public class GoiYCheDoLuyenTap extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GoiYCheDoLuyenTap().setVisible(true);
+                try {
+                    new GoiYCheDoLuyenTap().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(GoiYCheDoLuyenTap.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(GoiYCheDoLuyenTap.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
-    private javax.swing.JLabel dinhDuongDisplay;
+    private javax.swing.JTextArea dinhDuongDisplay;
     private javax.swing.JLabel header;
     private javax.swing.JLabel headerLuyenTap;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel luyenTapDisplay;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea luyenTapDisplay;
     private javax.swing.JLabel theTrang;
     private javax.swing.JLabel theTrangDisplay;
     // End of variables declaration//GEN-END:variables
