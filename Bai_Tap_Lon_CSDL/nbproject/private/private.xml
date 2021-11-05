@@ -2,16 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< Updated upstream
         <group>
-            <file>file:/C:/Users/admin/Documents/GitHub/CSDL/Bai_Tap_Lon_CSDL/src/bai_tap_lon/Welcome.java</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/CSDL/Bai_Tap_Lon_CSDL/src/bai_tap_lon/CSDL.java</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/CSDL/Bai_Tap_Lon_CSDL/src/bai_tap_lon/Them_Trung_Tam.java</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/CSDL/Bai_Tap_Lon_CSDL/src/bai_tap_lon/Nhap_Loi_Khuyen.java</file>
-            <file>file:/C:/Users/admin/Documents/GitHub/CSDL/Bai_Tap_Lon_CSDL/src/bai_tap_lon/TrangChuAdmin.java</file>
+            <file>file:/C:/Users/tungb/Documents/GitHub/CSDL/Bai_Tap_Lon_CSDL/src/bai_tap_lon/ChinhSuaThongTinNguoiDung.java</file>
+            <file>file:/C:/Users/tungb/Documents/GitHub/CSDL/Bai_Tap_Lon_CSDL/src/bai_tap_lon/GoiYCheDoLuyenTap.java</file>
+            <file>file:/C:/Users/tungb/Documents/GitHub/CSDL/Bai_Tap_Lon_CSDL/src/bai_tap_lon/TrangChuUser.java</file>
+            <file>file:/C:/Users/tungb/Documents/GitHub/CSDL/Bai_Tap_Lon_CSDL/src/bai_tap_lon/CSDL.java</file>
+            <file>file:/C:/Users/tungb/Documents/GitHub/CSDL/Bai_Tap_Lon_CSDL/src/bai_tap_lon/HienThiThongTinNguoiDung.java</file>
         </group>
-=======
-        <group/>
->>>>>>> Stashed changes
     </open-files>
 </project-private>

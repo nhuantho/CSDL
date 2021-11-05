@@ -112,6 +112,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Trung t&#xe2;m g&#x1ea7;n b&#x1ea1;n"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trungtamganActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="nhaptt">
       <Properties>

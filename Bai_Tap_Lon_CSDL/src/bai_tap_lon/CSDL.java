@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,7 +29,7 @@ public class CSDL {
     public static Connection jdbcConnection(){
         String url="jdbc:mysql://localhost:3306/quanlisuckhoe";
         String user="root";
-        String password = "Anhdungvk01";
+        String password = "5122001t";
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(url, user, password);
@@ -147,7 +148,7 @@ public class CSDL {
     //nhap thong tin hang ngay vao co so du lieu by tanhdz
     public static boolean insert_into_nhap_thong_tin_hang_ngay(String UserId,String day,String CanNang,String ChieuCao,String BMI,String TheTrang){
         try{
-            if(ChieuCao.equalsIgnoreCase("")||CanNang.equalsIgnoreCase("")) return false;
+            if(ChieuCao.equalsIgnoreCase("")==true||CanNang.equalsIgnoreCase("")==true) return false;
             String insert="insert into nhapthongtinvaloikhuyen values(?,?,?,?,?,?)";
             PreparedStatement ps=jdbcConnection().prepareStatement(insert);
             ps.setString(1, UserId);
@@ -155,14 +156,13 @@ public class CSDL {
             Double chieucao=Double.valueOf(ChieuCao);//format sang by tanhdz
             Double cannang=Double.valueOf(CanNang);
             Double bmi=Double.valueOf(BMI);
-            ps.setDouble(3, chieucao);
-            ps.setDouble(4, cannang);
+            ps.setDouble(3, cannang);
+            ps.setDouble(4, chieucao);
             ps.setDouble(5, bmi);
             ps.setString(6, TheTrang);
             int n=ps.executeUpdate();
-            if(n!=0)return true;
-            return false;
             //cap nhat xong by tanhdz
+            return n!=0;
         } catch(SQLException e){
             Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -189,84 +189,109 @@ public class CSDL {
         fw.close();
     }
     
+    /**
+     *
+     * @return
+     * @throws IOException
+     */
+    public static Vector<String> statement_hien_thi_thong_tin_nguoi_dung() throws IOException {
+       Vector<String> res = new Vector<>();
+       try{
+            Statement sta=jdbcConnection().createStatement();
+            String id = ReadIDFromFile();
+            String select= "SELECT user.*,\n" +
+                            "nhapthongtinvaloikhuyen.ChieuCao, nhapthongtinvaloikhuyen.CanNang, nhapthongtinvaloikhuyen.BMI, nhapthongtinvaloikhuyen.TheTrang, nhapthongtinvaloikhuyen.Day\n" +
+                            "FROM user, nhapthongtinvaloikhuyen \n" +
+                            "WHERE user.UserID = " + "\'" + id + "\'" + "\n" +
+                            "AND nhapthongtinvaloikhuyen.Day = (SELECT MAX(nhapthongtinvaloikhuyen.Day) FROM nhapthongtinvaloikhuyen);";
+            ResultSet re=sta.executeQuery(select);
+            while(re.next()) {
+                String userid=re.getString("UserID");
+                String hodem=re.getString("HoDem");
+                String ten=re.getString("Ten");
+                String date=re.getString("NgaySinh");
+                String diachi=re.getString("DiaChi");
+                String sdt=re.getString("SDT");
+                String chieuCao = re.getString("ChieuCao");
+                String canNang = re.getString("CanNang");
+                String bmi = re.getString("BMI");
+                String theTrang = re.getString("TheTrang");
+
+//                System.out.println(userid+" "+hoten+" "+date+" "+diachi+" "+sdt + " " + chieuCao  + " " + canNang + " " + bmi + " " + theTrang);
+                res.add(userid);
+                res.add(hodem);
+                res.add(ten);
+                res.add(date);
+                res.add(diachi);
+                res.add(sdt);
+                res.add(chieuCao);
+                res.add(canNang);
+                res.add(bmi);
+                res.add(theTrang);
+            }
+                
+
+            
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+       return res;
+   }
     
-    // cập nhật trung tâm
-    public static boolean insert_into_trungtam(String IDtrungtam,String TenTrungTam,String Tinh,String DiaChiCuThe,String sdt){
+    // Sửa thông tin người dùng
+    public static void statement_sua_thong_tin_nguoi_dung(String hodem, String ten, String dob, String address, String phone) throws IOException {
         try{
-            if(IDtrungtam.equalsIgnoreCase("")||TenTrungTam.equalsIgnoreCase("")||Tinh.equalsIgnoreCase("")||DiaChiCuThe.equalsIgnoreCase("")||sdt.equalsIgnoreCase(""))
-                    return false;
-            String insert="insert into trungtam values(?,?,?,?,?)";
-            PreparedStatement ps=jdbcConnection().prepareStatement(insert);
-            ps.setString(1, IDtrungtam);
-            ps.setString(2, TenTrungTam);
-            ps.setString(3, Tinh);
-            ps.setString(4, DiaChiCuThe);
-            ps.setString(5, sdt);
-            int n=ps.executeUpdate();
-            if(n!=0)return true;
-            return false;
+            Statement sta=jdbcConnection().createStatement();
+            String id = ReadIDFromFile();
+            String update = "UPDATE user\n" +
+                            "SET HoDem = " + "\'" + hodem + "\',\n" +
+                                "Ten = " + "\'" + ten + "\',\n" +
+                                "NgaySinh = " + "\'" + dob + "\',\n" +
+                                "DiaChi = " + "\'" + address + "\',\n"  +
+                                "SDT = " + "\'" + phone + "\'\n"  +
+                            "WHERE UserID = " + "\'" + id + "\';" ;
+            sta.executeUpdate(update);
+            
+        }catch(SQLException e){
+            System.out.println(e);
         }
-        catch(SQLException e){
-            Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
-        }
-        return false;
     }
     
-    //cap nhat them admin nào nhập trung tâm nào
-    public static boolean insert_into_capnhattrungtam(String IDadmin,String IDTrungTam,String date){
-        try{
-            String insert="insert into capnhattrungtam values(?,?,?)";
-            PreparedStatement ps=jdbcConnection().prepareStatement(insert);
-            ps.setString(1, IDadmin);
-            ps.setString(2, IDTrungTam);
-            ps.setString(3, date);
-            int n=ps.executeUpdate();
-            if(n!=0)return true;
-            return false;
+    
+    public static Vector<String> statement_luyen_tap_dinh_duong() throws SQLException, IOException {
+        Vector<String> res = new Vector<>();
+        Statement sta=jdbcConnection().createStatement();
+        String id = ReadIDFromFile();
+        String tt = null;
+        String select= "SELECT user.*,\n" +
+                        "nhapthongtinvaloikhuyen.ChieuCao, nhapthongtinvaloikhuyen.CanNang, nhapthongtinvaloikhuyen.BMI, nhapthongtinvaloikhuyen.TheTrang, nhapthongtinvaloikhuyen.Day\n" +
+                        "FROM user, nhapthongtinvaloikhuyen \n" +
+                        "WHERE user.UserID = " + "\'" + id + "\'" + "\n" +
+                        "AND nhapthongtinvaloikhuyen.Day = (SELECT MAX(nhapthongtinvaloikhuyen.Day) FROM nhapthongtinvaloikhuyen);";
+        ResultSet re=sta.executeQuery(select);
+        while(re.next()) {
+            tt = re.getString("TheTrang");
         }
-        catch(SQLException e){
-            Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
+        Statement state=jdbcConnection().createStatement();
+        String selectTheTrang = "SELECT * From loikhuyen WHERE TheTrang = " + "\'" + tt + "\';";
+        re = state.executeQuery(selectTheTrang);
+        while(re.next()) {
+            tt = re.getString("TheTrang");
+            String tapLuyen = re.getString("TapLuyen");
+            String dinhDuong = re.getString("DinhDuong");
+            res.add(tt);
+            res.add(tapLuyen);
+            res.add(dinhDuong);
         }
-        return false;
+        return res;
     }
     
-    //update loi khuyen
-    public static boolean update_loi_khuyen(String TheTrang,String TapLuyen,String DinhDuong){
-        try{
-            if(TapLuyen.equalsIgnoreCase("")||DinhDuong.equalsIgnoreCase(""))
-                    return false;
-            String update="UPDATE loikhuyen "
-                    + "SET TapLuyen=?"
-                    + ", DinhDuong=?"
-                    + "WHERE TheTrang=?";
-            PreparedStatement ps=jdbcConnection().prepareStatement(update);
-            ps.setString(1, TapLuyen);
-            ps.setString(2, DinhDuong);
-            ps.setString(3, TheTrang);
-            int n=ps.executeUpdate();
-            if(n!=0)return true;
-            return false;
-        }
-        catch(SQLException e){
-            Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
-        }
-        return false;
-    }
     
-    public static boolean insert_into_cap_nhat_loi_khuyen(String IDadmin,String thetrang,String date){
-        try{
-            String insert="insert into capnhatloikhuyen values(?,?,?)";
-            PreparedStatement ps=jdbcConnection().prepareStatement(insert);
-            ps.setString(1, IDadmin);
-            ps.setString(2, thetrang);
-            ps.setString(3, date);
-            int n=ps.executeUpdate();
-            if(n!=0)return true;
-            return false;
-        }
-        catch(SQLException e){
-            Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
-        }
-        return false;
+    public static String statement_trung_tam_gan_ban() {
+        String res = "";
+        
+        
+        
+        return res;
     }
 }
