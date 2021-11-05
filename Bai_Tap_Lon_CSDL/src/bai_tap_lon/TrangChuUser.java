@@ -66,6 +66,11 @@ public class TrangChuUser extends javax.swing.JFrame {
         trungtamgan.setBackground(new java.awt.Color(255, 102, 0));
         trungtamgan.setForeground(new java.awt.Color(255, 255, 255));
         trungtamgan.setText("Trung tâm gần bạn");
+        trungtamgan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trungtamganActionPerformed(evt);
+            }
+        });
 
         nhaptt.setBackground(new java.awt.Color(255, 102, 0));
         nhaptt.setForeground(new java.awt.Color(255, 255, 255));
@@ -198,6 +203,13 @@ public class TrangChuUser extends javax.swing.JFrame {
             thongtin.setVisible(true);
             this.dispose();
     }//GEN-LAST:event_nhapttActionPerformed
+
+    private void trungtamganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trungtamganActionPerformed
+        // TODO add your handling code here:
+        TrungTamGanBan center = new TrungTamGanBan();
+        center.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_trungtamganActionPerformed
 
     /**
      * @param args the command line arguments

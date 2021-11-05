@@ -286,4 +286,12 @@ public class CSDL {
         return res;
     }
     
+    
+    public static String statement_trung_tam_gan_ban() {
+        String res = "";
+        
+        
+        
+        return res;
+    }
 }
