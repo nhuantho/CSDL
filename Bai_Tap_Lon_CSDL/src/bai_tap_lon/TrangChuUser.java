@@ -5,6 +5,11 @@
  */
 package bai_tap_lon;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -61,6 +66,11 @@ public class TrangChuUser extends javax.swing.JFrame {
         trungtamgan.setBackground(new java.awt.Color(255, 102, 0));
         trungtamgan.setForeground(new java.awt.Color(255, 255, 255));
         trungtamgan.setText("Trung tâm gần bạn");
+        trungtamgan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trungtamganActionPerformed(evt);
+            }
+        });
 
         nhaptt.setBackground(new java.awt.Color(255, 102, 0));
         nhaptt.setForeground(new java.awt.Color(255, 255, 255));
@@ -152,11 +162,35 @@ public class TrangChuUser extends javax.swing.JFrame {
     }//GEN-LAST:event_thoatActionPerformed
 
     private void ttnguoidungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttnguoidungActionPerformed
-        // TODO add your handling code here:
+
+        try {
+            CSDL.statement_hien_thi_thong_tin_nguoi_dung();
+        } catch (IOException ex) {
+            Logger.getLogger(TrangChuUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            // TODO add your handling code here:
+            
+            HienThiThongTinNguoiDung infoUser = new HienThiThongTinNguoiDung();
+            infoUser.setVisible(true);
+            this.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(TrangChuUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ttnguoidungActionPerformed
 
     private void goiybaitapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goiybaitapActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            GoiYCheDoLuyenTap ltdd = new GoiYCheDoLuyenTap();
+            ltdd.setVisible(true);
+            this.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChuUser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(TrangChuUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_goiybaitapActionPerformed
 
     private void lichsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lichsuActionPerformed
@@ -171,6 +205,13 @@ public class TrangChuUser extends javax.swing.JFrame {
             thongtin.setVisible(true);
             this.dispose();
     }//GEN-LAST:event_nhapttActionPerformed
+
+    private void trungtamganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trungtamganActionPerformed
+        // TODO add your handling code here:
+        TrungTamGanBan center = new TrungTamGanBan();
+        center.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_trungtamganActionPerformed
 
     /**
      * @param args the command line arguments
