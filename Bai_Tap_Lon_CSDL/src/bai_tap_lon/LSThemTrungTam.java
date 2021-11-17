@@ -154,7 +154,7 @@ public class LSThemTrungTam extends javax.swing.JFrame {
      public boolean checkdate(String s1, String s2, String date){
         String[] tmp1 = s1.split("-");
         String[] tmp2 = s2.split("-");
-        String[] tmp = date.split("/");
+        String[] tmp = date.split("-");
         if(Integer.valueOf(tmp1[2]) ==  Integer.valueOf(tmp2[2])){
             if(Integer.valueOf(tmp1[1]) == Integer.valueOf(tmp2[1])){
                 if(Integer.valueOf(tmp1[0]) == Integer.valueOf(tmp2[0])){
@@ -195,9 +195,9 @@ public class LSThemTrungTam extends javax.swing.JFrame {
             while (re.next()) {
                 String id=re.getString("IDAdmin");
                 String idtt=re.getString("IDTrungTam");
-                String date=re.getString("NgayCapNhat");
-                if (checkdate(s1, s2, date)){
-                    tableModel.addRow(new Object[] {id, idtt, date});
+                String[] date=re.getString("NgayCapNhat").split("\\s+");
+                if (checkdate(s1, s2, date[0])){
+                    tableModel.addRow(new Object[] {id, idtt, date[0]});
                 }
 //                                System.out.println(id+" "+idtt+" "+date);
             }

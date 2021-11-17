@@ -10,9 +10,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 /**
  *
  * @author Nhuan's computer
@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 
 
 public class CSDL {
+
     private String UserID;
     public CSDL(){
         
@@ -189,6 +190,111 @@ public class CSDL {
         fw.close();
     }
     
+   /**
+     *
+     * @return
+     * @throws IOException
+     */
+    public static Vector<String> statement_hien_thi_thong_tin_nguoi_dung() throws IOException {
+       Vector<String> res = new Vector<>();
+       try{
+            Statement sta=jdbcConnection().createStatement();
+            String id = ReadIDFromFile();
+            String select= "SELECT user.*,\n" +
+                            "nhapthongtinvaloikhuyen.ChieuCao, nhapthongtinvaloikhuyen.CanNang, nhapthongtinvaloikhuyen.BMI, nhapthongtinvaloikhuyen.TheTrang, nhapthongtinvaloikhuyen.Day\n" +
+                            "FROM user, nhapthongtinvaloikhuyen \n" +
+                            "WHERE user.UserID = " + "\'" + id + "\'" + "\n" +
+                            "AND nhapthongtinvaloikhuyen.Day = (SELECT MAX(nhapthongtinvaloikhuyen.Day) FROM nhapthongtinvaloikhuyen);";
+            ResultSet re=sta.executeQuery(select);
+            while(re.next()) {
+                String userid=re.getString("UserID");
+                String hodem=re.getString("HoDem");
+                String ten=re.getString("Ten");
+                String date=re.getString("NgaySinh");
+                String diachi=re.getString("DiaChi");
+                String sdt=re.getString("SDT");
+                String chieuCao = re.getString("ChieuCao");
+                String canNang = re.getString("CanNang");
+                String bmi = re.getString("BMI");
+                String theTrang = re.getString("TheTrang");
+ 
+//                System.out.println(userid+" "+hoten+" "+date+" "+diachi+" "+sdt + " " + chieuCao  + " " + canNang + " " + bmi + " " + theTrang);
+                res.add(userid);
+                res.add(hodem);
+                res.add(ten);
+                res.add(date);
+                res.add(diachi);
+                res.add(sdt);
+                res.add(chieuCao);
+                res.add(canNang);
+                res.add(bmi);
+                res.add(theTrang);
+            }
+                
+ 
+            
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+       return res;
+   }
+    
+    // Sửa thông tin người dùng
+    public static void statement_sua_thong_tin_nguoi_dung(String hodem, String ten, String dob, String address, String phone) throws IOException {
+        try{
+            Statement sta=jdbcConnection().createStatement();
+            String id = ReadIDFromFile();
+            String update = "UPDATE user\n" +
+                            "SET HoDem = " + "\'" + hodem + "\',\n" +
+                                "Ten = " + "\'" + ten + "\',\n" +
+                                "NgaySinh = " + "\'" + dob + "\',\n" +
+                                "DiaChi = " + "\'" + address + "\',\n"  +
+                                "SDT = " + "\'" + phone + "\'\n"  +
+                            "WHERE UserID = " + "\'" + id + "\';" ;
+            sta.executeUpdate(update);
+            
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+    }
+    
+    
+    public static Vector<String> statement_luyen_tap_dinh_duong() throws SQLException, IOException {
+        Vector<String> res = new Vector<>();
+        Statement sta=jdbcConnection().createStatement();
+        String id = ReadIDFromFile();
+        String tt = null;
+        String select= "SELECT user.*,\n" +
+                        "nhapthongtinvaloikhuyen.ChieuCao, nhapthongtinvaloikhuyen.CanNang, nhapthongtinvaloikhuyen.BMI, nhapthongtinvaloikhuyen.TheTrang, nhapthongtinvaloikhuyen.Day\n" +
+                        "FROM user, nhapthongtinvaloikhuyen \n" +
+                        "WHERE user.UserID = " + "\'" + id + "\'" + "\n" +
+                        "AND nhapthongtinvaloikhuyen.Day = (SELECT MAX(nhapthongtinvaloikhuyen.Day) FROM nhapthongtinvaloikhuyen);";
+        ResultSet re=sta.executeQuery(select);
+        while(re.next()) {
+            tt = re.getString("TheTrang");
+        }
+        Statement state=jdbcConnection().createStatement();
+        String selectTheTrang = "SELECT * From loikhuyen WHERE TheTrang = " + "\'" + tt + "\';";
+        re = state.executeQuery(selectTheTrang);
+        while(re.next()) {
+            tt = re.getString("TheTrang");
+            String tapLuyen = re.getString("TapLuyen");
+            String dinhDuong = re.getString("DinhDuong");
+            res.add(tt);
+            res.add(tapLuyen);
+            res.add(dinhDuong);
+        }
+        return res;
+    }
+    
+    
+    public static String statement_trung_tam_gan_ban() {
+        String res = "";
+        
+        
+        
+        return res;
+    }
     
     // cập nhật trung tâm
     public static boolean insert_into_trungtam(String IDtrungtam,String TenTrungTam,String Tinh,String DiaChiCuThe,String sdt){
@@ -268,5 +374,17 @@ public class CSDL {
             Logger.getLogger(CSDL.class.getName()).log(Level.SEVERE, null, e);
         }
         return false;
+    }
+    
+    public static void statement_xoa_tk() throws SQLException, IOException {
+        Statement sta=jdbcConnection().createStatement();
+        String id = ReadIDFromFile();
+        String select= "DELETE FROM user WHERE UserID = \'" + id + "\';";
+        sta.executeUpdate(select);
+        select= "DELETE FROM nhapthongtinvaloikhuyen WHERE UserID = \'" + id + "\';";
+        sta.executeUpdate(select);
+        select= "DELETE FROM taikhoan WHERE UserID = \'" + id + "\';";
+        sta.executeUpdate(select);
+        
     }
 }

@@ -201,6 +201,13 @@ public class ChinhSuaThongTinNguoiDung extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(ChinhSuaThongTinNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
         }
+        try {
+            HienThiThongTinNguoiDung te = new HienThiThongTinNguoiDung();
+            te.setVisible(true);
+            this.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(ChinhSuaThongTinNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_saveActionPerformed
 

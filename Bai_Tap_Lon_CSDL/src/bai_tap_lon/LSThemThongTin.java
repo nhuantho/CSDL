@@ -143,7 +143,7 @@ public class LSThemThongTin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        TrangChuAdmin tt = new TrangChuAdmin();
+        TrangChuUser tt = new TrangChuUser();
         tt.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -168,14 +168,14 @@ public class LSThemThongTin extends javax.swing.JFrame {
             ResultSet re=sta.executeQuery(select);
             while (re.next()) {
                 String uid=re.getString("UserID");
-                String date=re.getString("Day");
+                String[] date=re.getString("Day").split("\\s+");
                 String chieucao=re.getString("ChieuCao");
                 String cannang=re.getString("CanNang");
                 String bmi=re.getString("BMI");
                 String thettrang=re.getString("TheTrang");
-                if (checkdate(s1, s2, date)){
+                if (checkdate(s1, s2, date[0])){
                     if (uid.equals(id))
-                        tableModel.addRow(new Object[] {date, chieucao, cannang, bmi, thettrang});
+                        tableModel.addRow(new Object[] {date[0], chieucao, cannang, bmi, thettrang});
                 }
             }
         }catch(SQLException e){
@@ -187,7 +187,7 @@ public class LSThemThongTin extends javax.swing.JFrame {
     public boolean checkdate(String s1, String s2, String date){
         String[] tmp1 = s1.split("-");
         String[] tmp2 = s2.split("-");
-        String[] tmp = date.split("/");
+        String[] tmp = date.split("-");
         if(Integer.valueOf(tmp1[2]) ==  Integer.valueOf(tmp2[2])){
             if(Integer.valueOf(tmp1[1]) == Integer.valueOf(tmp2[1])){
                 if(Integer.valueOf(tmp1[0]) == Integer.valueOf(tmp2[0])){

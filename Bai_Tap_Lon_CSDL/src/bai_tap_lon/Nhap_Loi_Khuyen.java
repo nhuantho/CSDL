@@ -49,7 +49,7 @@ public class Nhap_Loi_Khuyen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        cacloaithetrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Béo phì độ I", "Béo phì độ II", "Béo phì độ III", "Bình thường", "Gầy độ 1", "Gầy độ 2", "Gầy độ 3", "Thừa cân" }));
+        cacloaithetrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn", "Béo phì độ I", "Béo phì độ II", "Béo phì độ III", "Bình thường", "Gầy độ 1", "Gầy độ 2", "Gầy độ 3", "Thừa cân" }));
         cacloaithetrang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cacloaithetrangActionPerformed(evt);

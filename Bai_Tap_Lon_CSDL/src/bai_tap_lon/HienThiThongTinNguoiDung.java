@@ -6,6 +6,7 @@
 package bai_tap_lon;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -72,6 +73,7 @@ public class HienThiThongTinNguoiDung extends javax.swing.JFrame {
         theTrang = new javax.swing.JLabel();
         theTrangDisplay = new javax.swing.JLabel();
         back = new javax.swing.JButton();
+        Clear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(880, 600));
@@ -125,12 +127,21 @@ public class HienThiThongTinNguoiDung extends javax.swing.JFrame {
             }
         });
 
+        Clear.setBackground(new java.awt.Color(230, 94, 48));
+        Clear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Clear.setText("Xóa Tài Khoản");
+        Clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,7 +171,9 @@ public class HienThiThongTinNguoiDung extends javax.swing.JFrame {
                                 .addGap(71, 71, 71)
                                 .addComponent(theTrang, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(68, 68, 68)
-                                .addComponent(theTrangDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(theTrangDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(Clear)))
                 .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
@@ -197,11 +210,12 @@ public class HienThiThongTinNguoiDung extends javax.swing.JFrame {
                     .addComponent(canNangDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(bmi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(bmiDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(theTrang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(theTrangDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(theTrangDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
@@ -227,6 +241,19 @@ public class HienThiThongTinNguoiDung extends javax.swing.JFrame {
         trangchu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backActionPerformed
+
+    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
+        try {
+            CSDL.statement_xoa_tk();
+        } catch (SQLException ex) {
+            Logger.getLogger(HienThiThongTinNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(HienThiThongTinNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Welcome wel = new Welcome();
+        wel.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_ClearActionPerformed
 
     
     /**
@@ -271,6 +298,7 @@ public class HienThiThongTinNguoiDung extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Clear;
     private javax.swing.JLabel addressDisplay;
     private javax.swing.JButton back;
     private javax.swing.JLabel bmi;
